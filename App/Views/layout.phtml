@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Meu Controle</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a65ef1dcc3.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+	</head>
+
+	<body>
+        <nav>
+            <div class="logo">
+                <div>
+                    <i class="fa-solid fa-bars menu-icon"></i>
+                    <span class="app-logo">Meu Controle</span>
+                </div>
+
+                <div class="user">
+                    <span>Olá, Admin</span>
+                    <i class="fa-regular fa-circle-user"></i>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="logo">
+                    <i class="fa-solid fa-xmark menu-icon"></i>
+                    <span class="app-logo">Meu Controle</span>
+                </div>
+                <div class="sidebar-content">
+                    <ul class="list">
+                        <li class="list-icon" id="dashboard">
+                            <a href="/dashboard" class="nav-link">
+                                <i class="fa-solid fa-house"></i>
+                                <span class="text">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="list-icon" id="mesas">
+                            <a href="/mesas" class="nav-link">
+                                <i class="fa-solid fa-clipboard"></i>
+                                <span class="text">Mesas</span>
+                            </a>
+                        </li>
+
+                        <li class="list-icon" id="cardapio">
+                            <a href="/cardapio" class="nav-link" >
+                                <i class="fa-solid fa-table-list"></i>
+                                <span class="text">Cardápio</span>
+                            </a>
+                        </li>
+
+                        <li class="list-icon" id="historico">
+                            <a href="/historico" class="nav-link" >
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <span class="text">Histórico</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="bottom-content">
+                        <li class="list-icon" id="settings">
+                            <a href="/settings" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                <span class="text">Settings</span>
+                            </a>
+                        </li>
+
+                        <li class="list-icon">
+                            <a href="/logout" class="nav-link">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <span class="text">Logout</span>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="container">
+            <?= $this->content() ?>
+        </section>
+
+        <script src="/JS/Sidebar.js"></script>
+	</body>
+</html>
