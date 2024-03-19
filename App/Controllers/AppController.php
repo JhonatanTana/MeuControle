@@ -31,6 +31,9 @@ class AppController extends Action {
         session_start();
         if ($_SESSION['id'] != '' && $_SESSION['username'] != '' && $_SESSION['permission'] != '') {
 
+            $produto = Container::getModel('Produtos');
+            $this->view->produtos = $produto -> recuperaProduto();
+
             $this->render('cardapio');
         }else {
             header('Location:/?login=error');
