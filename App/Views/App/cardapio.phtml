@@ -2,26 +2,89 @@
     var Atual = document.getElementById('cardapio');
     Atual.setAttribute('class','point')
 </script>
+<script src="/JS/Produto.js"></script>
+<script src="/JS/Preço.js"></script>
+<script>
 
-<!-- <section>
+</script>
 
+
+<link rel="stylesheet" href="CSS/Cardapio.css">
+<link rel="stylesheet" href="CSS/PopUp.css">
+
+<section class="actions">
+    <bottom class="btn secondary-btn" onclick="adicionarCategoria()">Adicionar Categoria</bottom>
+    <bottom class="btn primary-btn" onclick="adicionarProduto()">Adicionar Produto</bottom>
+</section>
+
+<section id="pop-area">
+    <details class="pop" id="novacategoria" style="display: none" open>
+        <summary class="cabecario" >Adicionar Categoria <i class="fa-solid fa-xmark" onclick="fecharPopup(novacategoria)"></i></summary>
+        <form action="/novacategoria" method="POST" id="form-categoria">
+            <div class="input-content">
+                <input type="text" placeholder="Categoria" name="categoria" class="input" id="categoria">
+                <label for="categoria" class="input-label">Categoria</label>
+            </div>
+
+            <button class="submit-btn" type="submit">Salvar</button>
+        </form>
+    </details>
+    <details class="pop" id="novoproduto" style="display: none" open>
+        <summary class="cabecario"> Adicionar Produto <i class="fa-solid fa-xmark" onclick="fecharPopup(novoproduto)"></i></summary>
+        <form action="/novoproduto" method="POST">
+            <div class="input-content">
+                <input type="text" placeholder="produto" name="produto" class="input" id="input">
+                <label for="input" class="input-label">Produto</label>
+            </div>
+            <div class="input-content">
+                <input type="number" placeholder="Preço" name="preco" class="input" id="preco" step="0.01">
+                <label for="preco" class="input-label">Preço</label>
+            </div>
+            <div class="input-content">
+                <select name="categoria" id="" class="input">
+                    <option> -- Selecione -- </option>
+                    <?php foreach ($this->view->categorias as $categoria) { ?>
+                    <option value="<?= $categoria['id'] ?>"> <?= $categoria['categoria'] ?> </option>
+                    <?php }?>
+                </select>
+            </div>
+
+            <button class="submit-btn" type="submit">Salvar</button>
+        </form>
+    </details>
 </section>
 
 <section class="produtos">
-    <details>
-        <summary>Sumário 1</summary>
-        <ul>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-        </ul>
-    </details>
-</section> -->
 
-<?php
+    <?php foreach ($this->view->produtos as $category => $produtos) { ?>
+        <details>
+            <summary class="cabecario"><?= $category ?></summary>
+            <div class="categoria-content">
+                <?php foreach ($produtos as $produto) { ?>
+                    <div class="categoria-produtos">
+                        <span><?= ucwords($produto['produto']) ?></span>
+                        <span>R$<?= ucwords($produto['preco']) ?></span>
+                        <i class="fa-solid fa-pen-to-square edit-icon" onclick="editar(<?php echo $produto['id'] ?>, <?= $produto['produto']?>)"></i>
+                        <div class="cl-toggle-switch">
+                            <label class="cl-switch">
+                                <input type="checkbox" onchange="desativarProduto(this)" id="<?php echo $produto['id'] ?>"  <?php echo $produto['disponibilidade'] == 1 ? 'checked' : ''; ?>>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                <?php }?>
+            </div>
+        </details>
+    <?php }?>
 
-echo '<pre>';
-print_r($this->view->produtos);
+</section>
+
+
+<?php if ($this->view->cadastro == 'success') { ?>
+    <div class="success-notification">
+        <i class="fa-solid fa-circle-check"></i>
+        <span class="text-success"> Cadastro Bem Sucedido </span>
+    </div>
+
+
+<?php } ?>

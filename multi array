@@ -1,0 +1,19 @@
+<?php
+
+    foreach ($this->view->produtos as $category => $product) {
+        echo "Category: $category\n";
+        foreach ($product as $products) {
+            echo "Product: " . $products['produto'] . ", Price: " . $products['preco'] . "\n";
+        }
+    }?>
+
+        <?php foreach ($this->view->produtos as $category => $products) { ?>
+            <details>
+                <summary><?= $category ?></summary>
+                <?php foreach ($produtos as $produto) { ?>
+                    <ul>
+                        <li><?= $produto['produto'] ?></li>
+                    </ul>
+                <?php }?>
+            </details>
+        <?php }?>

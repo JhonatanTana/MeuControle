@@ -1,6 +1,12 @@
 :root{
     --primary-color: rebeccapurple;
-    --secondary-color: white;
-    --tertiary-color: black;
+    --secondary-color: rgba(102, 51, 153, .4);
+    --tertiary-color: #c5c5c5;
     --light-gray: #8e8e8e;
+    --white: #ffff;
+    --black: #000000FF;
+    --success: rgba(50, 205, 50, 0.7);
+    --enable-1: white;
+    --enable-2: limegreen;
+
 }

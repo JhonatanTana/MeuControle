@@ -48,6 +48,21 @@ class Route extends Bootstrap {
             'controller' => 'AuthController',
             'action' => 'logout'
         );
+        $routes['novacategoria'] = array(
+            'route' => '/novacategoria',
+            'controller' => 'AppController',
+            'action' => 'novacategoria'
+        );
+        $routes['novoproduto'] = array(
+            'route' => '/novoproduto',
+            'controller' => 'AppController',
+            'action' => 'novoproduto'
+        );
+        $routes['desabilitaproduto'] = array(
+            'route' => '/cardapio/',
+            'controller' => 'AppController',
+            'action' => 'desabilitaproduto'
+        );
 
 		$this->setRoutes($routes);
 	}
