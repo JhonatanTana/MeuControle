@@ -1,0 +1,93 @@
+nav {
+  position: fixed;
+  margin-top: 0;
+  width: 60px;
+  height: 100vh;
+  background-color: var(--primary-color);
+  transition:width .3s ease;
+  z-index: 2;
+  &:hover {
+    width:150px;
+    box-shadow: 0px 0px 10px 100vw var(--shadow);
+  }
+  &:hover .logo fa-icon {
+    display: none;
+  }
+  &:hover .logo h3 {
+    display: block;
+  }
+  &:hover > ul li span {
+    opacity: 1;
+  }
+  &:hover ul li {
+    width: 80%;
+  }
+}
+
+.logo {
+  width: 150px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  position: relative;
+  left: .2em;
+  color: var(--white);
+}
+
+.logo-img {
+  position: relative;
+  left: 1.2em;
+}
+
+.logo h3 {
+  display: none;
+  padding-left: 1em;
+  font-size: 1em;
+  user-select: none;
+}
+
+ul {
+  padding-top: .5em;
+  padding-left: .5em;
+  list-style-type: none;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.li-content {
+  display: flex;
+  position: relative;
+  left: .2em;
+}
+
+ul li {
+  display: flex;
+  padding: .7em;
+  margin: .5em 0;
+  width: 45%;
+  cursor: pointer;
+  color: var(--white);
+  border-radius: 32px;
+  user-select: none;
+  transition:opacity .3s ease;
+}
+
+ul li span {
+  padding-left: .5em;
+  opacity: 0;
+  font-weight: 500;
+}
+
+ul li:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.active {
+  background-color: var(--white);
+}
+
+.active-icon, .active-span {
+  color: var(--black);
+}
