@@ -4,7 +4,8 @@
   --primary-color: rebeccapurple;
   --white: #ffff;
   --black: #000000;
-  --shadow: rgb(0,0,0, .5)
+  --shadow: rgb(0,0,0, .5);
+  --light-gray: #8e8e8e;
 }
 
 * {
