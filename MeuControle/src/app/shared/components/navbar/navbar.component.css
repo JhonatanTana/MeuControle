@@ -10,6 +10,10 @@ nav {
     width:150px;
     box-shadow: 0px 0px 10px 100vw var(--shadow);
   }
+  &:hover .logo {
+    width: 150px;
+  }
+
   &:hover .logo fa-icon {
     display: none;
   }
@@ -17,7 +21,7 @@ nav {
     display: block;
   }
   &:hover > ul li span {
-    opacity: 1;
+    display: block;
   }
   &:hover ul li {
     width: 80%;
@@ -25,7 +29,7 @@ nav {
 }
 
 .logo {
-  width: 150px;
+  width: 50px;
   padding-top: 1em;
   padding-bottom: 1em;
   position: relative;
@@ -75,7 +79,7 @@ ul li {
 
 ul li span {
   padding-left: .5em;
-  opacity: 0;
+  display: none;
   font-weight: 500;
 }
 

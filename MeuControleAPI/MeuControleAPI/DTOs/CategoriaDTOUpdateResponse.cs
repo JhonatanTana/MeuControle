@@ -1,4 +1,6 @@
-﻿namespace MeuControleAPI.DTOs {
+﻿using MeuControleAPI.Models;
+
+namespace MeuControleAPI.DTOs {
     public class CategoriaDTOUpdateResponse {
 
         public int CategoriaId { get; set; }

@@ -1,0 +1,31 @@
+.actions {
+  display: flex;
+  position: relative;
+  top: .5em;
+  left: 1em;
+  width: 99%;
+}
+
+.btn {
+  margin: .5em;
+  padding: 1%;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .4s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.primary-btn {
+  background: var(--primary-color);
+}
+
+.secondary-btn {
+  background: var(--secondary-color);
+}

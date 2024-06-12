@@ -1,11 +1,4 @@
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.csproj.AssemblyReference.cache
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.AssemblyInfoInputs.cache
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.AssemblyInfo.cs
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.csproj.CoreCompileInputs.cache
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.MvcApplicationPartsAssemblyInfo.cs
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.MvcApplicationPartsAssemblyInfo.cache
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.sourcelink.json
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\web.config
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\appsettings.Development.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\appsettings.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\MeuControleAPI.exe
@@ -114,6 +107,14 @@ D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Deb
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.csproj.AssemblyReference.cache
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.AssemblyInfoInputs.cache
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.AssemblyInfo.cs
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.csproj.CoreCompileInputs.cache
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.sourcelink.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\staticwebassets.build.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\staticwebassets.development.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\staticwebassets\msbuild.MeuControleAPI.Microsoft.AspNetCore.StaticWebAssets.props

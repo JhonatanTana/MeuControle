@@ -6,6 +6,8 @@ public class UnitOfWork : IUnitOfWork {
 
     private IProdutoRepository? _produtoRepo;
     private ICategoriaRepository? _categoriaRepo;
+    private IPedidoRepository? _pedidoRepo;
+    private IProdutosPedidoRepository? _produtosPedidoRepo;
     public AppDbContext _context;
 
     public UnitOfWork(AppDbContext context) {
@@ -24,6 +26,22 @@ public class UnitOfWork : IUnitOfWork {
 
         get {
             return _categoriaRepo = _categoriaRepo ?? new CategoriaRepository(_context);
+        }
+    }
+
+    public IPedidoRepository PedidoRepository {
+    
+        get {
+
+            return _pedidoRepo = _pedidoRepo ?? new PedidoRepository(_context);
+        }
+    }
+
+    public IProdutosPedidoRepository ProdutosPedidoRepositories {
+
+        get {
+
+            return _produtosPedidoRepo = _produtosPedidoRepo ?? new ProdutosPedidoRepository(_context);
         }
     }
 

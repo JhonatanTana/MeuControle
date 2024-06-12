@@ -1,8 +1,8 @@
 ﻿using MeuControleAPI.Models;
 using AutoMapper;
 
-namespace MeuControleAPI.DTOs.Mapping; 
-public class ProdutoDTOMappingProfile: Profile {
+namespace MeuControleAPI.DTOs.Mapping;
+public class ProdutoDTOMappingProfile : Profile {
     public ProdutoDTOMappingProfile() {
 
         CreateMap<Produto, ProdutoDTO>().ReverseMap();

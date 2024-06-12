@@ -22,7 +22,7 @@ public class ProdutoController : Controller {
         _mapper = mapper;
     }
 
-    private ActionResult<IEnumerable<ProdutoDTO>> ObterProdutos(IPagedList<Produto> produtos) {
+    private ActionResult<IEnumerable<ProdutoDTO>> ObterProdutos(IPagedList<ProdutoDTO> produtos) {
 
         var metadata = new {
             produtos.Count,

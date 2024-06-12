@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { CARDAPIO_ROUTES } from "./cardapio.routing";
 import { CardapioComponent } from './pages/cardapio/cardapio.component';
-import { AppModule } from "../../app.module";
 import { SharedModule } from "../../shared/shared.module";
-
-
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { TabelaProdutosComponent } from "./components/tabela-produtos/tabela-produtos.component";
+import { AcoesComponent } from './components/acoes/acoes.component';
 
 @NgModule({
   declarations: [
-    CardapioComponent
+    CardapioComponent,
+    TabelaProdutosComponent,
+    AcoesComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(CARDAPIO_ROUTES),
-    SharedModule,
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(CARDAPIO_ROUTES),
+        SharedModule,
+        FaIconComponent,
+    ]
 })
 export class CardapioModule { }

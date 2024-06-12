@@ -48,6 +48,8 @@ builder.Services.AddControllers()
 // Repositórios
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+builder.Services.AddScoped<IProdutosPedidoRepository, ProdutosPedidoRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -92,28 +94,21 @@ builder.Services.AddAuthorization(options => {
             claim => claim.Type == "id" && claim.Value == "usuario") || context.User.IsInRole("SuperAdmin")));
 });
 
-// Logs
-/*builder.Services.AddScoped<ApiLoggingFilter>();
-builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration {
-
-    LogLevel = LogLevel.Information
-
-}));*/
-
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
 builder.Services.AddAutoMapper(typeof(CategoriaDTOMappingProfile));
+builder.Services.AddAutoMapper(typeof(PedidoDTOMappingProfile));
+builder.Services.AddAutoMapper(typeof(ProdutosPedidoDTOMappingProfile));
 
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
-/*if (app.Environment.IsDevelopment()) {
+if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.ConfigureExceptionHandler();
-}*/
+}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
