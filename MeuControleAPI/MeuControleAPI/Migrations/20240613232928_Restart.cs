@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MeuControleAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class PrimeiraMigracao : Migration
+    public partial class Restart : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -85,6 +85,21 @@ namespace MeuControleAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categoria", x => x.CategoriaId);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "FormaPagamento",
+                columns: table => new
+                {
+                    PagamentoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FormaPagamento", x => x.PagamentoId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -225,7 +240,6 @@ namespace MeuControleAPI.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Preco = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Disponibilidade = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    DataCadastro = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CategoriaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -237,6 +251,58 @@ namespace MeuControleAPI.Migrations
                         principalTable: "Categoria",
                         principalColumn: "CategoriaId",
                         onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Pedido",
+                columns: table => new
+                {
+                    PedidoId = table.Column<int>(type: "int(5)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Mesa = table.Column<int>(type: "int(4)", nullable: false),
+                    Data = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ValorTotal = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Disponibilidade = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    FormaPagamentoPagamentoId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pedido", x => x.PedidoId);
+                    table.ForeignKey(
+                        name: "FK_Pedido_FormaPagamento_FormaPagamentoPagamentoId",
+                        column: x => x.FormaPagamentoPagamentoId,
+                        principalTable: "FormaPagamento",
+                        principalColumn: "PagamentoId");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ProdutosPedido",
+                columns: table => new
+                {
+                    ProdutosPedidoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Quantidade = table.Column<int>(type: "int", nullable: false),
+                    PrecoTotal = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    ProdutoId = table.Column<int>(type: "int", nullable: true),
+                    PedidoId = table.Column<int>(type: "int(5)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProdutosPedido", x => x.ProdutosPedidoId);
+                    table.ForeignKey(
+                        name: "FK_ProdutosPedido_Pedido_PedidoId",
+                        column: x => x.PedidoId,
+                        principalTable: "Pedido",
+                        principalColumn: "PedidoId");
+                    table.ForeignKey(
+                        name: "FK_ProdutosPedido_Produtos_ProdutoId",
+                        column: x => x.ProdutoId,
+                        principalTable: "Produtos",
+                        principalColumn: "ProdutoId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -278,9 +344,24 @@ namespace MeuControleAPI.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Pedido_FormaPagamentoPagamentoId",
+                table: "Pedido",
+                column: "FormaPagamentoPagamentoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Produtos_CategoriaId",
                 table: "Produtos",
                 column: "CategoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProdutosPedido_PedidoId",
+                table: "ProdutosPedido",
+                column: "PedidoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProdutosPedido_ProdutoId",
+                table: "ProdutosPedido",
+                column: "ProdutoId");
         }
 
         /// <inheritdoc />
@@ -302,13 +383,22 @@ namespace MeuControleAPI.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Produtos");
+                name: "ProdutosPedido");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Pedido");
+
+            migrationBuilder.DropTable(
+                name: "Produtos");
+
+            migrationBuilder.DropTable(
+                name: "FormaPagamento");
 
             migrationBuilder.DropTable(
                 name: "Categoria");

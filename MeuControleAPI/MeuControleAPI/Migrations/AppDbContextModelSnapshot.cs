@@ -113,25 +113,42 @@ namespace MeuControleAPI.Migrations
                     b.ToTable("Categoria");
                 });
 
+            modelBuilder.Entity("MeuControleAPI.Models.FormaPagamento", b =>
+                {
+                    b.Property<int>("PagamentoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("PagamentoId"));
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("PagamentoId");
+
+                    b.ToTable("FormaPagamento");
+                });
+
             modelBuilder.Entity("MeuControleAPI.Models.Pedido", b =>
                 {
                     b.Property<int>("PedidoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int(5)");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("PedidoId"));
 
-                    b.Property<int?>("CategoriaId")
-                        .HasColumnType("int");
-
-                    b.Property<DateOnly>("Data")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("Disponibilidade")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<int?>("FormaPagamentoPagamentoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Mesa")
-                        .HasColumnType("int(2)");
+                        .HasColumnType("int(4)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -142,7 +159,7 @@ namespace MeuControleAPI.Migrations
 
                     b.HasKey("PedidoId");
 
-                    b.HasIndex("CategoriaId");
+                    b.HasIndex("FormaPagamentoPagamentoId");
 
                     b.ToTable("Pedido");
                 });
@@ -184,18 +201,14 @@ namespace MeuControleAPI.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ProdutosPedidoId"));
 
-                    b.Property<int>("PedidoId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Preco")
-                        .HasColumnType("decimal(10,2)");
+                    b.Property<int?>("PedidoId")
+                        .HasColumnType("int(5)");
 
                     b.Property<decimal>("PrecoTotal")
                         .HasColumnType("decimal(10,2)");
 
-                    b.Property<string>("Produto")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
@@ -203,6 +216,8 @@ namespace MeuControleAPI.Migrations
                     b.HasKey("ProdutosPedidoId");
 
                     b.HasIndex("PedidoId");
+
+                    b.HasIndex("ProdutoId");
 
                     b.ToTable("ProdutosPedido");
                 });
@@ -341,15 +356,17 @@ namespace MeuControleAPI.Migrations
 
             modelBuilder.Entity("MeuControleAPI.Models.Pedido", b =>
                 {
-                    b.HasOne("MeuControleAPI.Models.Categoria", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("CategoriaId");
+                    b.HasOne("MeuControleAPI.Models.FormaPagamento", "FormaPagamento")
+                        .WithMany()
+                        .HasForeignKey("FormaPagamentoPagamentoId");
+
+                    b.Navigation("FormaPagamento");
                 });
 
             modelBuilder.Entity("MeuControleAPI.Models.Produto", b =>
                 {
                     b.HasOne("MeuControleAPI.Models.Categoria", "Categoria")
-                        .WithMany()
+                        .WithMany("Produtos")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -359,13 +376,15 @@ namespace MeuControleAPI.Migrations
 
             modelBuilder.Entity("MeuControleAPI.Models.ProdutosPedido", b =>
                 {
-                    b.HasOne("MeuControleAPI.Models.Pedido", "Pedido")
+                    b.HasOne("MeuControleAPI.Models.Pedido", null)
                         .WithMany("ProdutosPedido")
-                        .HasForeignKey("PedidoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PedidoId");
 
-                    b.Navigation("Pedido");
+                    b.HasOne("MeuControleAPI.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId");
+
+                    b.Navigation("Produto");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

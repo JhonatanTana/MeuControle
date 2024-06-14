@@ -9,5 +9,7 @@ namespace MeuControleAPI.Context {
         }
         public DbSet<Categoria>? Categorias { get; set; }
         public DbSet<Produto>? Produtos { get; set; }
+        public DbSet<Pedido>? Pedido { get; set; }
+        public DbSet<ProdutosPedido>? ProdutosPedido { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MeuControleAPI.Context;
 using MeuControleAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
 namespace MeuControleAPI.Repositories; 
@@ -15,10 +16,24 @@ public class Repository<T> : IRepository<T> where T : class {
 
         return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
-    public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate) {
+    public async Task<IQueryable<T>> GetAllQueryableAsync() {
+
+        return _context.Set<T>().AsNoTracking();
+    }
+    public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate, params Func<IQueryable<T>, IIncludableQueryable<T, object>>[] includes) {
+        IQueryable<T> query = _context.Set<T>();
+
+        foreach (var include in includes) {
+            query = include(query);
+        }
+
+        return await query.FirstOrDefaultAsync(predicate);
+    }
+
+    /*public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate) {
 
         return await _context.Set<T>().FirstOrDefaultAsync(predicate);
-    }
+    }*/
     public T Create(T entity) {
 
         _context.Set<T>().Add(entity);
@@ -33,10 +48,5 @@ public class Repository<T> : IRepository<T> where T : class {
 
         _context.Set<T>().Remove(entity);
         return entity;
-    }
-
-    public async Task<IQueryable<T>> GetAllQueryableAsync() {
-
-        return _context.Set<T>().AsNoTracking();
     }
 }

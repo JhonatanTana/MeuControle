@@ -5,10 +5,12 @@ using MeuControleAPI.Models;
 namespace MeuControleAPI.DTOs; 
 public class ProdutosPedidoDTO {
 
+    public int ProdutosPedidoId { get; set; }
     [Required]
-    public string? Produto { get; set; }
     public int Quantidade { get; set; }
-    public decimal Preco { get; set; }
+    [Required]
     public decimal PrecoTotal { get; set; }
+    public int ProdutoId { get; set; }
     public int PedidoId { get; set; }
+    public List<Produto> Produtos { get; set; }
 }

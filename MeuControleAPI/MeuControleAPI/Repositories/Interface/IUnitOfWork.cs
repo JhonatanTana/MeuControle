@@ -3,7 +3,8 @@
         IProdutoRepository ProdutoRepository { get; }
         ICategoriaRepository CategoriaRepository { get; }
         IPedidoRepository PedidoRepository { get; }
-        IProdutosPedidoRepository ProdutosPedidoRepositories { get; }
+        IProdutosPedidoRepository ProdutosPedidoRepository { get; }
+        IFormaPagamentoRepository FormaPagamentoRepository { get; }
         Task CommitAsync();
     }
 }

@@ -8,6 +8,7 @@ public class UnitOfWork : IUnitOfWork {
     private ICategoriaRepository? _categoriaRepo;
     private IPedidoRepository? _pedidoRepo;
     private IProdutosPedidoRepository? _produtosPedidoRepo;
+    private IFormaPagamentoRepository? _formaPagamentoRepo;
     public AppDbContext _context;
 
     public UnitOfWork(AppDbContext context) {
@@ -37,11 +38,19 @@ public class UnitOfWork : IUnitOfWork {
         }
     }
 
-    public IProdutosPedidoRepository ProdutosPedidoRepositories {
+    public IProdutosPedidoRepository ProdutosPedidoRepository {
 
         get {
 
             return _produtosPedidoRepo = _produtosPedidoRepo ?? new ProdutosPedidoRepository(_context);
+        }
+    }
+
+    public IFormaPagamentoRepository FormaPagamentoRepository{
+
+        get {
+
+            return _formaPagamentoRepo = _formaPagamentoRepo ?? new FormaPagamentoRepository(_context);
         }
     }
 

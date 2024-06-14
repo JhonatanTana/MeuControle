@@ -13,5 +13,5 @@ public class ProdutoDTO {
     [Required]
     public decimal Preco { get; set; }
     public bool Disponibilidade { get; set; }
-    public int CategoriaId { get; set; } // Relaciona a chave estrangeira
+    public int CategoriaId { get; set; }
 }

@@ -1,6 +1,5 @@
 using MeuControleAPI.Context;
 using MeuControleAPI.DTOs.Mapping;
-using MeuControleAPI.Filters;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories;
 using MeuControleAPI.Repositories.Interface;
@@ -50,6 +49,7 @@ builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IProdutosPedidoRepository, ProdutosPedidoRepository>();
+builder.Services.AddScoped<IFormaPagamentoRepository, FormaPagamentoRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -99,6 +99,7 @@ builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
 builder.Services.AddAutoMapper(typeof(CategoriaDTOMappingProfile));
 builder.Services.AddAutoMapper(typeof(PedidoDTOMappingProfile));
 builder.Services.AddAutoMapper(typeof(ProdutosPedidoDTOMappingProfile));
+builder.Services.AddAutoMapper(typeof(FormaPagamentoDTOMappingProfile));
 
 var app = builder.Build();
 
