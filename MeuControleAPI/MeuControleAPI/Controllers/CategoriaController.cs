@@ -77,21 +77,6 @@ public class CategoriaController : Controller {
         return Ok(categoriasDTO);
     }
 
-    [HttpGet("CategoriasAtivas")] // recupera todas as categorias ativas
-    public async Task<ActionResult<CategoriaDTO>> GetCategoriasAtivas() {
-
-        var categorias = await _uof.CategoriaRepository.GetAllAsync();
-
-        if (categorias is null) {
-
-            return BadRequest("Nao existem categorias");
-        }
-
-        var categoriasDTO = _mapper.Map<IEnumerable<CategoriaDTO>>(categorias).Where(c => c.Disponibilidade == true);
-
-        return Ok(categoriasDTO);
-    }
-
     [HttpGet("{id}", Name = "ObterCategoria")] // recupera a categoria pelo ID
     public async Task<ActionResult<CategoriaDTO>> Get(int id) {
 
@@ -106,7 +91,22 @@ public class CategoriaController : Controller {
         return Ok(categoriaDto);
     }
 
-    [HttpGet("produtos")] //recupera a categoria e seus produtos
+    [HttpGet("Ativas")] // recupera todas as categorias ativas
+    public async Task<ActionResult<CategoriaDTO>> GetCategoriasAtivas() {
+
+        var categorias = await _uof.CategoriaRepository.GetAllAsync();
+
+        if (categorias is null) {
+
+            return BadRequest("Nao existem categorias");
+        }
+
+        var categoriasDTO = _mapper.Map<IEnumerable<CategoriaDTO>>(categorias).Where(c => c.Disponibilidade == true);
+
+        return Ok(categoriasDTO);
+    }
+
+    [HttpGet("Produtos")] //recupera a categoria e seus produtos
     public async Task<ActionResult<CategoriaDTO>> GetCategoriasProdutos() {
 
         var categorias = await _uof.CategoriaRepository.GetAllQueryableAsync();

@@ -8,4 +8,7 @@ public class FormaPagamento {
 
     [Required]
     public string Nome { get; set; }
+
+    [Required]
+    public bool Disponibilidade { get; set; }
 }

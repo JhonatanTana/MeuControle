@@ -42,7 +42,7 @@ builder.Services.AddSwaggerGen(c => {
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
         options.JsonSerializerOptions.
-            ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            ReferenceHandler = ReferenceHandler.IgnoreCycles).AddNewtonsoftJson();
 
 // Repositórios
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();

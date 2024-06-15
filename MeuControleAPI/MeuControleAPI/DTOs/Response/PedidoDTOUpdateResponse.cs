@@ -1,17 +1,12 @@
 ﻿using MeuControleAPI.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
-namespace MeuControleAPI.DTOs; 
-public class PedidoDTO {
+namespace MeuControleAPI.DTOs.Resposta; 
+public class PedidoDTOUpdateResponse {
 
     public int PedidoId { get; set; }
     public string? Nome { get; set; }
     public int Mesa { get; set; }
     public DateTime Data { get; set; }
-    public decimal ValorTotal { get; set; }
-    public bool Disponibilidade { get; set; }
     public FormaPagamento? FormaPagamento { get; set; }
     public ICollection<ProdutosPedido>? ProdutosPedido { get; set; }
 }

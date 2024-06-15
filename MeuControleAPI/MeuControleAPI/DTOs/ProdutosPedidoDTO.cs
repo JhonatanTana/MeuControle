@@ -12,5 +12,6 @@ public class ProdutosPedidoDTO {
     public decimal PrecoTotal { get; set; }
     public int ProdutoId { get; set; }
     public int PedidoId { get; set; }
-    public List<Produto> Produtos { get; set; }
+    [Required]
+    public IEnumerable<Produto> Produtos { get; set; }
 }

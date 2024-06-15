@@ -4,6 +4,9 @@ using MeuControleAPI.Repositories.Interface;
 using MeuControleAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.JsonPatch;
+using MeuControleAPI.DTOs.Resposta;
+using MeuControleAPI.DTOs.Request;
 
 namespace MeuControleAPI.Controllers;
 
@@ -18,6 +21,17 @@ public class PedidosController : Controller {
 
         _uof = uof;
         _mapper = mapper;
+    }
+
+    private void CalcularValorTotal(PedidoDTO pedido) {
+
+        if (pedido != null && pedido.ProdutosPedido != null) {
+
+            pedido.ValorTotal = pedido.ProdutosPedido.Sum(ip => ip.PrecoTotal);
+        }
+        else {
+            pedido.ValorTotal = 0;
+        }
     }
 
     [HttpPost] // cria um novo pedido
@@ -39,31 +53,32 @@ public class PedidosController : Controller {
     }
 
     [HttpGet] // recupera todos os pedidos
-    public async Task<ActionResult<PedidoDTO>> Get() {
-
+    public async Task<ActionResult<IEnumerable<PedidoDTO>>> Get() {
         var pedidos = await _uof.PedidoRepository.GetAllAsync();
 
-        if (pedidos is null) {
-
+        if (pedidos == null || !pedidos.Any()) {
             return BadRequest("Pedido nao encontrado");
         }
 
-        var pedidoDTO = _mapper.Map<IEnumerable<PedidoDTO>>(pedidos);
-        return Ok(pedidoDTO);
+        var pedidoDTOs = _mapper.Map<IEnumerable<PedidoDTO>>(pedidos);
+
+        return Ok(pedidoDTOs);
     }
 
     [HttpGet("Completo/{id:int}", Name = "ObterPedido")] // recupera o pedido e seus produtos pelo ID
     public async Task<ActionResult<PedidoDTO>> Get(int id) {
+
         var pedido = await _uof.PedidoRepository.GetAsync(
             p => p.PedidoId == id,
             i => i.Include(p => p.ProdutosPedido).ThenInclude(pp => pp.Produto)
         );
 
-        if (pedido is null) {
+        if (pedido == null) {
             return NotFound($"Pedido com id={id} não encontrado.");
         }
 
         var pedidoDto = _mapper.Map<PedidoDTO>(pedido);
+        CalcularValorTotal(pedidoDto);
 
         return Ok(pedidoDto);
     }
@@ -106,5 +121,31 @@ public class PedidosController : Controller {
         var pedidosFinalizadosDTO = _mapper.Map<IEnumerable<PedidoDTO>>(pedidosFinalizados);
 
         return Ok(pedidosFinalizadosDTO);
+    }
+
+    [HttpPatch("/Atualiza/{id}")] // Encerra o pedido
+    public async Task<ActionResult<PedidoDTOUpdateResponse>> Patch(JsonPatchDocument<PedidoDTOUpdateResquest> patchPedidoDto, int id) {
+
+        if (patchPedidoDto == null || id <= 0)
+            return BadRequest();
+
+        var pedido = await _uof.PedidoRepository.GetAsync(c => c.PedidoId == id);
+
+        if (pedido == null)
+            return NotFound("Pedido nao encontrado");
+
+        var pedidoUpdateRequest = _mapper.Map<PedidoDTOUpdateResquest>(pedido);
+
+        patchPedidoDto.ApplyTo(pedidoUpdateRequest, ModelState);
+
+        if (!ModelState.IsValid || !TryValidateModel(pedidoUpdateRequest))
+            return BadRequest(ModelState);
+
+        _mapper.Map(pedidoUpdateRequest, pedido);
+
+        _uof.PedidoRepository.Update(pedido);
+        await _uof.CommitAsync();
+
+        return Ok(_mapper.Map<PedidoDTOUpdateResquest>(pedido));
     }
 }

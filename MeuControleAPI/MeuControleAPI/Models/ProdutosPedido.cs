@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace MeuControleAPI.Models; 
 public class ProdutosPedido {
@@ -16,7 +15,6 @@ public class ProdutosPedido {
     public decimal PrecoTotal { get; set; }
     public int ProdutoId { get; set; }
     public int PedidoId { get; set; }
-    [JsonIgnore]
-    public Produto? Produto { get; set; }
+    public Produto Produto { get; set; }
 }
 

@@ -3,18 +3,6 @@
   "WorkspaceRootPath": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\models\\formapagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\models\\formapagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\produtospedidocontrolller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\produtospedidocontrolller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -26,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,54 +26,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormaPagamento.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\FormaPagamento.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Models\\FormaPagamento.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\FormaPagamento.cs",
-              "RelativeToolTip": "MeuControleAPI\\Models\\FormaPagamento.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T01:27:14.2Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Pedido.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Pedido.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Models\\Pedido.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Pedido.cs",
-              "RelativeToolTip": "MeuControleAPI\\Models\\Pedido.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T01:27:05.942Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProdutosPedidoControlller.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\ProdutosPedidoControlller.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\ProdutosPedidoControlller.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\ProdutosPedidoControlller.cs",
-              "RelativeToolTip": "MeuControleAPI\\Controllers\\ProdutosPedidoControlller.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T01:25:43.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "PedidosController.cs",
               "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\PedidosController.cs",
               "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\PedidosController.cs",
               "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\PedidosController.cs",
               "RelativeToolTip": "MeuControleAPI\\Controllers\\PedidosController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwDYAAAAXAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAA1wEUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T01:19:36.707Z",
+              "WhenOpened": "2024-06-15T00:53:54.334Z",
               "EditorCaption": ""
             }
           ]

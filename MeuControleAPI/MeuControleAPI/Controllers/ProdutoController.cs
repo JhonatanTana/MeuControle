@@ -127,6 +127,6 @@ public class ProdutoController : Controller {
 
         var produtoDeletado = _mapper.Map<ProdutoDTO>(deletado);
 
-        return Ok(produtoDeletado);
+        return NoContent();
     }
 }

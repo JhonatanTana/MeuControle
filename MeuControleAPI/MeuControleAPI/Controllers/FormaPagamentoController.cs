@@ -55,6 +55,22 @@ public class FormaPagamentoController : Controller {
         return Ok(formaPagamento);
     }
 
+    [HttpGet("Ativas")] // recupera todas as formas de pagamento ativas
+    public async Task<ActionResult<FormaPagamentoDTO>> GetAtiva() {
+
+        var forma = await _uof.FormaPagamentoRepository.GetAllQueryableAsync();
+
+        var filtro = forma.Where(f => f.Disponibilidade == true);
+
+        if (forma == null) {
+
+            return NotFound("Forma de Pagamento nao encontrada");
+        }
+
+        var formaPagamento = _mapper.Map<IEnumerable<FormaPagamentoDTO>>(filtro);
+        return Ok(formaPagamento);
+    }
+
     [HttpGet("{id:int}", Name = "ObterFomaPagamento")] // recupera a forma depagamento pelo ID
     public async Task<ActionResult<FormaPagamentoDTO>> Get(int id) {
 
@@ -88,24 +104,7 @@ public class FormaPagamentoController : Controller {
             Nome = formaAtualizada.Nome,
         };
 
-        return Ok(formaAtualizadaDTO);
-    }
-
-    [HttpDelete("{id:int}")] // deleta uma forma de pagamento
-    public async Task<ActionResult<FormaPagamentoDTO>> Delete(int id) {
-
-        var forma = await _uof.FormaPagamentoRepository.GetAsync(p => p.PagamentoId == id);
-
-        if (forma is null) {
-
-            return NotFound("Forma de Pagamento ano encontrada");
-        }
-
-        var deletada = _uof.FormaPagamentoRepository.Delete(forma);
-        await _uof.CommitAsync();
-
-        var formaDeletada = _mapper.Map<FormaPagamentoDTO>(deletada);
-
-        return Ok(formaDeletada);
+        return new CreatedAtRouteResult("ObterFomaPagamento",
+            new { id = formaAtualizadaDTO.PagamentoId }, formaAtualizadaDTO);
     }
 }

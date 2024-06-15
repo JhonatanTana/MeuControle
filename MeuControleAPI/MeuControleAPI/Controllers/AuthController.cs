@@ -143,7 +143,7 @@ public class AuthController : ControllerBase {
 
     [HttpPost]
     [Authorize(Policy = "ExclusiveOnly")]
-    [Route("revoke/{username}")] // Deleta o refresh token 
+    [Route("Revoke/{username}")] // Deleta o refresh token 
     public async Task<IActionResult> Revoke(string username) {
         var user = await _userManager.FindByNameAsync(username);
 
