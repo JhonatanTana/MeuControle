@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace MeuControleAPI.Models; 
+namespace MeuControleAPI.Models;
 public class Produto {
 
     [Key]
@@ -16,7 +16,7 @@ public class Produto {
     [Column(TypeName = "decimal(10,2)")]
     public decimal Preco { get; set; }
     public bool Disponibilidade { get; set; }
-    public int CategoriaId { get; set; } 
+    public int CategoriaId { get; set; }
 
     [JsonIgnore]
     public Categoria? Categoria { get; set; }

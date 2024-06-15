@@ -1,16 +1,12 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MeuControleAPI.Migrations
-{
+namespace MeuControleAPI.Migrations {
     /// <inheritdoc />
-    public partial class data : Migration
-    {
+    public partial class data : Migration {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<DateOnly>(
                 name: "Data",
                 table: "Pedido",
@@ -21,8 +17,7 @@ namespace MeuControleAPI.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<DateTime>(
                 name: "Data",
                 table: "Pedido",

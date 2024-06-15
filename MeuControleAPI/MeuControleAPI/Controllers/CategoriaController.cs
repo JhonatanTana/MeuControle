@@ -2,6 +2,7 @@
 using MeuControleAPI.DTOs;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ public class CategoriaController : Controller {
         _mapper = mapper;
     }
 
+    [Authorize]
     [HttpPost] // cria uma categoria
     public async Task<ActionResult<CategoriaDTO>> Post(CategoriaDTO categorias) {
 
@@ -39,6 +41,7 @@ public class CategoriaController : Controller {
             new { id = novaCategoriaDto.CategoriaId }, categoriaCriada);
     }
 
+    [Authorize]
     [HttpGet] // recupera todas as categorias
     public async Task<ActionResult<CategoriaDTO>> Get() {
 
@@ -54,6 +57,7 @@ public class CategoriaController : Controller {
         return Ok(categoriasDTO);
     }
 
+    [Authorize]
     [HttpGet("{id}", Name = "ObterCategoria")] // recupera a categoria pelo ID
     public async Task<ActionResult<CategoriaDTO>> Get(int id) {
 
@@ -68,6 +72,7 @@ public class CategoriaController : Controller {
         return Ok(categoriaDto);
     }
 
+    [Authorize]
     [HttpGet("Ativas")] // recupera todas as categorias ativas
     public async Task<ActionResult<CategoriaDTO>> GetCategoriasAtivas() {
 
@@ -83,6 +88,7 @@ public class CategoriaController : Controller {
         return Ok(categoriasDTO);
     }
 
+    [Authorize]
     [HttpGet("Produtos")] //recupera a categoria e seus produtos
     public async Task<ActionResult<CategoriaDTO>> GetCategoriasProdutos() {
 
@@ -95,6 +101,7 @@ public class CategoriaController : Controller {
         return Ok(categoriasDTO);
     }
 
+    [Authorize]
     [HttpPut] // edita a categoria
     public async Task<ActionResult<CategoriaDTO>> Put(CategoriaDTO categorias) {
 

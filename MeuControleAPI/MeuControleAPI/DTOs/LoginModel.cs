@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MeuControleAPI.DTOs; 
+namespace MeuControleAPI.DTOs;
 public class LoginModel {
 
 

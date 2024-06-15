@@ -1,4 +1,4 @@
-﻿namespace MeuControleAPI.DTOs; 
+﻿namespace MeuControleAPI.DTOs;
 public class FormaPagamentoDTO {
 
     public int PagamentoId { get; set; }

@@ -2,11 +2,11 @@
 using MeuControleAPI.DTOs.Request;
 using MeuControleAPI.Models;
 
-namespace MeuControleAPI.DTOs.Mapping; 
+namespace MeuControleAPI.DTOs.Mapping;
 public class PedidoDTOMappingProfile : Profile {
 
-    public PedidoDTOMappingProfile() { 
-        
+    public PedidoDTOMappingProfile() {
+
         CreateMap<Pedido, PedidoDTO>().ReverseMap();
         CreateMap<ProdutosPedido, ProdutosPedidoDTO>().ReverseMap();
         CreateMap<FormaPagamento, FormaPagamentoDTO>().ReverseMap();

@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace MeuControleAPI.Services; 
+namespace MeuControleAPI.Services;
 public class TokenService : ITokenService {
 
     public JwtSecurityToken GenerateAccessToken(IEnumerable<Claim> claims, IConfiguration _config) {

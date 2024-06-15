@@ -2,6 +2,7 @@
 using MeuControleAPI.DTOs;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +27,7 @@ public class ProdutosPedidoController : Controller {
         }
     }
 
+    [Authorize]
     [HttpPost] // cria produtos
     public async Task<ActionResult<ProdutosPedidoDTO>> Post(ProdutosPedidoDTO produtosPedidoDTO) {
 
@@ -53,6 +55,7 @@ public class ProdutosPedidoController : Controller {
         return Ok(pPedidoCriado);
     }
 
+    [Authorize]
     [HttpGet("Pedido/{id:int}")] // recupera produtos pelo ID do pedido
     public async Task<ActionResult<ProdutosPedidoDTO>> Get(int id) {
 
@@ -69,6 +72,7 @@ public class ProdutosPedidoController : Controller {
         return Ok(produtosPedido);
     }
 
+    [Authorize]
     [HttpDelete("{id:int}")] // deleta produtos
     public async Task<ActionResult<ProdutosPedidoDTO>> Delete(int id) {
 

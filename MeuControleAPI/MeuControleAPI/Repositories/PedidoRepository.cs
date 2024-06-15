@@ -2,7 +2,6 @@
 using MeuControleAPI.Models;
 using MeuControleAPI.Pagination;
 using MeuControleAPI.Repositories.Interface;
-using Microsoft.IdentityModel.Tokens;
 using X.PagedList;
 
 
@@ -14,7 +13,7 @@ public class PedidoRepository : Repository<Pedido>, IPedidoRepository {
     public PedidoRepository(AppDbContext context) : base(context) { }
 
     public async Task<IPagedList<Pedido>> GetPedidoAbertosAsync(PedidoParameters pedidoParams) {
-        
+
         var pedidos = await GetAllAsync();
 
         var pedidosOrdenados = pedidos.OrderBy(p => p.PedidoId).Where(p => p.Disponibilidade = true).AsQueryable();

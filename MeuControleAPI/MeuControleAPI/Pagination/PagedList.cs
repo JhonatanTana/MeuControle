@@ -1,6 +1,4 @@
-﻿using X.PagedList;
-
-namespace MeuControleAPI.Pagination; 
+﻿namespace MeuControleAPI.Pagination;
 public class PagedList<T> : List<T> where T : class {
 
 

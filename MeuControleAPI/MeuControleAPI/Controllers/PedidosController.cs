@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using MeuControleAPI.DTOs;
-using MeuControleAPI.Repositories.Interface;
+using MeuControleAPI.DTOs.Request;
+using MeuControleAPI.DTOs.Resposta;
 using MeuControleAPI.Models;
+using MeuControleAPI.Pagination;
+using MeuControleAPI.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.JsonPatch;
-using MeuControleAPI.DTOs.Resposta;
-using MeuControleAPI.DTOs.Request;
-using MeuControleAPI.Pagination;
 using Newtonsoft.Json;
 using X.PagedList;
 
@@ -53,6 +54,7 @@ public class PedidosController : Controller {
         }
     }
 
+    [Authorize]
     [HttpPost] // cria um novo pedido
     public async Task<ActionResult<PedidoDTO>> Post(PedidoDTO pedidos) {
 
@@ -71,6 +73,7 @@ public class PedidosController : Controller {
         return new CreatedAtRouteResult("ObterPedido", new { id = pedidoCriado.PedidoId }, pedidoCriado);
     }
 
+    [Authorize]
     [HttpGet] // recupera todos os pedidos
     public async Task<ActionResult<IEnumerable<PedidoDTO>>> Get() {
         var pedidos = await _uof.PedidoRepository.GetAllAsync();
@@ -84,6 +87,7 @@ public class PedidosController : Controller {
         return Ok(pedidoDTOs);
     }
 
+    [Authorize]
     [HttpGet("Completo/{id:int}", Name = "ObterPedido")] // recupera o pedido e seus produtos pelo ID
     public async Task<ActionResult<PedidoDTO>> Get(int id) {
 
@@ -102,6 +106,7 @@ public class PedidosController : Controller {
         return Ok(pedidoDto);
     }
 
+    [Authorize]
     [HttpGet("Produtos")] //recupera todos os pedidos e seus produtos
     public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetProdutosPedidos() {
 
@@ -114,6 +119,7 @@ public class PedidosController : Controller {
         return Ok(pedidosDTO);
     }
 
+    [Authorize]
     [HttpGet("Paginado/Abertos")] // recupera todos os pedidos abertos
     public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetAbertos([FromQuery] PedidoParameters pedidoParameters) {
 
@@ -121,6 +127,7 @@ public class PedidosController : Controller {
         return ObterPedidos(pedidos);
     }
 
+    [Authorize]
     [HttpGet("Paginado/Encerrados")] // recupera todos os pedidos fechados e filtra por data
     public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetProdutosFilterPreco([FromQuery] PedidosFiltroData pedidoFiltroParams) {
 
@@ -128,6 +135,7 @@ public class PedidosController : Controller {
         return ObterPedidos(produtos);
     }
 
+    [Authorize]
     [HttpPatch("/Atualiza/{id}")] // Encerra o pedido
     public async Task<ActionResult<PedidoDTOUpdateResponse>> Patch(JsonPatchDocument<PedidoDTOUpdateResquest> patchPedidoDto, int id) {
 

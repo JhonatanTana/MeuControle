@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MeuControleAPI.Models;
 
-namespace MeuControleAPI.DTOs.Mapping; 
+namespace MeuControleAPI.DTOs.Mapping;
 public class ProdutosPedidoDTOMappingProfile : Profile {
 
     public ProdutosPedidoDTOMappingProfile() {

@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using MeuControleAPI.Models;
 using System.ComponentModel.DataAnnotations;
-using MeuControleAPI.Models;
 
-namespace MeuControleAPI.DTOs; 
+namespace MeuControleAPI.DTOs;
 public class ProdutosPedidoDTO {
 
     public int ProdutosPedidoId { get; set; }

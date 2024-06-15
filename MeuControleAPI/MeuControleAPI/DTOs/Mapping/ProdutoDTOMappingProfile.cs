@@ -1,5 +1,5 @@
-﻿using MeuControleAPI.Models;
-using AutoMapper;
+﻿using AutoMapper;
+using MeuControleAPI.Models;
 
 namespace MeuControleAPI.DTOs.Mapping;
 public class ProdutoDTOMappingProfile : Profile {

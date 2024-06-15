@@ -1,8 +1,5 @@
-﻿using MeuControleAPI.Models;
-using MeuControleAPI.Pagination;
-using Microsoft.EntityFrameworkCore.Query;
+﻿using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
-using X.PagedList;
 
 namespace MeuControleAPI.Repositories.Interface {
     public interface IRepository<T> {

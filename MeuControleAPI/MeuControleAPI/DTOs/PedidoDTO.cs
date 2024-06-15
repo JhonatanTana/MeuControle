@@ -1,9 +1,6 @@
 ﻿using MeuControleAPI.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
-namespace MeuControleAPI.DTOs; 
+namespace MeuControleAPI.DTOs;
 public class PedidoDTO {
 
     public int PedidoId { get; set; }

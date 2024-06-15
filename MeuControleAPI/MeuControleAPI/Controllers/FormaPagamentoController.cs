@@ -2,6 +2,7 @@
 using MeuControleAPI.DTOs;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuControleAPI.Controllers;
@@ -19,6 +20,7 @@ public class FormaPagamentoController : Controller {
         _mapper = mapper;
     }
 
+    [Authorize]
     [HttpPost] // cria nova forma de pagamento
     public async Task<ActionResult<FormaPagamentoDTO>> Post(FormaPagamentoDTO pagamento) {
 
@@ -40,6 +42,7 @@ public class FormaPagamentoController : Controller {
 
     }
 
+    [Authorize]
     [HttpGet] // recupera todas as formas de pagamento
     public async Task<ActionResult<FormaPagamentoDTO>> Get() {
 
@@ -54,6 +57,7 @@ public class FormaPagamentoController : Controller {
         return Ok(formaPagamento);
     }
 
+    [Authorize]
     [HttpGet("Ativas")] // recupera todas as formas de pagamento ativas
     public async Task<ActionResult<FormaPagamentoDTO>> GetAtiva() {
 
@@ -70,6 +74,7 @@ public class FormaPagamentoController : Controller {
         return Ok(formaPagamento);
     }
 
+    [Authorize]
     [HttpGet("{id:int}", Name = "ObterFomaPagamento")] // recupera a forma depagamento pelo ID
     public async Task<ActionResult<FormaPagamentoDTO>> Get(int id) {
 
@@ -84,6 +89,7 @@ public class FormaPagamentoController : Controller {
         return Ok(formaPagamento);
     }
 
+    [Authorize]
     [HttpPut] // atualiza a forma de pagamento
     public async Task<ActionResult<FormaPagamentoDTO>> Put(FormaPagamentoDTO pagamento) {
 

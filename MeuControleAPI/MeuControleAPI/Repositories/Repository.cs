@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace MeuControleAPI.Repositories; 
+namespace MeuControleAPI.Repositories;
 public class Repository<T> : IRepository<T> where T : class {
 
     protected readonly AppDbContext _context;

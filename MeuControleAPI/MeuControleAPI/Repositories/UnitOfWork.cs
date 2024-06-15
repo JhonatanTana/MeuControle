@@ -31,7 +31,7 @@ public class UnitOfWork : IUnitOfWork {
     }
 
     public IPedidoRepository PedidoRepository {
-    
+
         get {
 
             return _pedidoRepo = _pedidoRepo ?? new PedidoRepository(_context);
@@ -46,7 +46,7 @@ public class UnitOfWork : IUnitOfWork {
         }
     }
 
-    public IFormaPagamentoRepository FormaPagamentoRepository{
+    public IFormaPagamentoRepository FormaPagamentoRepository {
 
         get {
 

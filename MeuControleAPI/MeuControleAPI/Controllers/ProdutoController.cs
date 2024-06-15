@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using MeuControleAPI.Context;
 using MeuControleAPI.DTOs;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using X.PagedList;
 
 namespace MeuControleAPI.Controllers;
 
@@ -22,12 +20,13 @@ public class ProdutoController : Controller {
         _mapper = mapper;
     }
 
+    [Authorize]
     [HttpPost] // cria uma categoria
     public async Task<ActionResult<ProdutoDTO>> Post(ProdutoDTO produtos) {
 
         if (produtos is null) {
 
-            return BadRequest();
+            return BadRequest("Produtos nao eoncontrado");
         }
 
         var produto = _mapper.Map<Produto>(produtos);
@@ -41,6 +40,7 @@ public class ProdutoController : Controller {
             new { id = novoProdutoDto.ProdutoId }, novoProdutoDto);
     }
 
+    [Authorize]
     [HttpGet] // recupera todos os produtos
     public async Task<ActionResult<ProdutoDTO>> Get() {
 
@@ -48,7 +48,7 @@ public class ProdutoController : Controller {
 
         if (produtos is null) {
 
-            return BadRequest();
+            return BadRequest("Produtos nao eoncontrado");
         }
 
         var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
@@ -56,6 +56,25 @@ public class ProdutoController : Controller {
         return Ok(produtosDTO);
     }
 
+    [Authorize]
+    [HttpGet] // recupera todos os produtos
+    public async Task<ActionResult<ProdutoDTO>> GetDisponiveis() {
+
+        var produtos = await _uof.ProdutoRepository.GetAllQueryableAsync();
+
+        var filtro = produtos.Where(p => p.Disponibilidade == true);
+
+        if (produtos is null) {
+
+            return BadRequest("Produtos nao eoncontrado");
+        }
+
+        var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(filtro);
+
+        return Ok(produtosDTO);
+    }
+
+    [Authorize]
     [HttpGet("{id}", Name = "ObterProduto")] // recupera o produto pelo ID
     public async Task<ActionResult<ProdutoDTO>> Get(int id) {
 
@@ -69,6 +88,7 @@ public class ProdutoController : Controller {
         return Ok(produtoDto);
     }
 
+    [Authorize]
     [HttpPut] // edita um produto
     public async Task<ActionResult<ProdutoDTO>> Put(ProdutoDTO produtos) {
 
@@ -93,6 +113,7 @@ public class ProdutoController : Controller {
         return Ok(produtoAtualizadoDto);
     }
 
+    [Authorize]
     [HttpDelete("{id:int}")] //deleta um produto
     public async Task<ActionResult<ProdutoDTO>> Delete(int id) {
 

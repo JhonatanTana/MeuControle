@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MeuControleAPI.Models; 
+namespace MeuControleAPI.Models;
 public class FormaPagamento {
 
     [Key]

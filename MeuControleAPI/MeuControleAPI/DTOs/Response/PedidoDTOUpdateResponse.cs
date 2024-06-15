@@ -1,6 +1,6 @@
 ﻿using MeuControleAPI.Models;
 
-namespace MeuControleAPI.DTOs.Resposta; 
+namespace MeuControleAPI.DTOs.Resposta;
 public class PedidoDTOUpdateResponse {
 
     public int PedidoId { get; set; }

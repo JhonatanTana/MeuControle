@@ -2,14 +2,11 @@
 
 #nullable disable
 
-namespace MeuControleAPI.Migrations
-{
+namespace MeuControleAPI.Migrations {
     /// <inheritdoc />
-    public partial class updateFormaPagamento : Migration
-    {
+    public partial class updateFormaPagamento : Migration {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_ProdutosPedido_Pedido_PedidoId",
                 table: "ProdutosPedido");
@@ -63,8 +60,7 @@ namespace MeuControleAPI.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropForeignKey(
                 name: "FK_ProdutosPedido_Pedido_PedidoId",
                 table: "ProdutosPedido");

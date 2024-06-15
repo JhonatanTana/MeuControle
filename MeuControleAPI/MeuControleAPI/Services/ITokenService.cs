@@ -1,7 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace MeuControleAPI.Services; 
+namespace MeuControleAPI.Services;
 public interface ITokenService {
 
     JwtSecurityToken GenerateAccessToken(IEnumerable<Claim> claims, IConfiguration _config);

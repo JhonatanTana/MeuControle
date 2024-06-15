@@ -1,8 +1,7 @@
 ﻿using MeuControleAPI.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
-namespace MeuControleAPI.DTOs; 
+namespace MeuControleAPI.DTOs;
 public class CategoriaDTO {
 
     public int CategoriaId { get; set; }
