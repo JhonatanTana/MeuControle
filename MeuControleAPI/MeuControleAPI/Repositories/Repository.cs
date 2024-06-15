@@ -29,11 +29,6 @@ public class Repository<T> : IRepository<T> where T : class {
 
         return await query.FirstOrDefaultAsync(predicate);
     }
-
-    /*public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate) {
-
-        return await _context.Set<T>().FirstOrDefaultAsync(predicate);
-    }*/
     public T Create(T entity) {
 
         _context.Set<T>().Add(entity);

@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.JsonPatch;
 using MeuControleAPI.DTOs.Resposta;
 using MeuControleAPI.DTOs.Request;
+using MeuControleAPI.Pagination;
+using Newtonsoft.Json;
+using X.PagedList;
 
 namespace MeuControleAPI.Controllers;
 
@@ -22,7 +25,23 @@ public class PedidosController : Controller {
         _uof = uof;
         _mapper = mapper;
     }
+    private ActionResult<IEnumerable<PedidoDTO>> ObterPedidos(IPagedList<Pedido> pedidos) {
 
+        var metadata = new {
+            pedidos.Count,
+            pedidos.PageSize,
+            pedidos.PageCount,
+            pedidos.TotalItemCount,
+            pedidos.HasNextPage,
+            pedidos.HasPreviousPage
+        };
+
+        Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+        var pedidosDto = _mapper.Map<IEnumerable<PedidoDTO>>(pedidos);
+
+        return Ok(pedidosDto);
+    }
     private void CalcularValorTotal(PedidoDTO pedido) {
 
         if (pedido != null && pedido.ProdutosPedido != null) {
@@ -95,32 +114,18 @@ public class PedidosController : Controller {
         return Ok(pedidosDTO);
     }
 
-    [HttpGet("Encerrados")] // recupera os pedidos encerrados
-    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetPedidoFinalizado() {
+    [HttpGet("Paginado/Abertos")] // recupera todos os pedidos abertos
+    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetAbertos([FromQuery] PedidoParameters pedidoParameters) {
 
-        var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
-
-        var finalizados = pedidos.Include(p => p.FormaPagamento).Where(p => p.Disponibilidade == false); 
-
-        var pedidosFinalizados = await finalizados.ToListAsync();
-
-        var pedidosFinalizadosDTO = _mapper.Map<IEnumerable<PedidoDTO>>(pedidosFinalizados);
-
-        return Ok(pedidosFinalizadosDTO);
+        var pedidos = await _uof.PedidoRepository.GetPedidoAbertosAsync(pedidoParameters);
+        return ObterPedidos(pedidos);
     }
 
-    [HttpGet("Abertos")] // recupera os pedidos em aberto
-    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetPedidoAtivos() {
+    [HttpGet("Paginado/Encerrados")] // recupera todos os pedidos fechados e filtra por data
+    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetProdutosFilterPreco([FromQuery] PedidosFiltroData pedidoFiltroParams) {
 
-        var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
-
-        var finalizados = pedidos.Include(p => p.FormaPagamento).Where(p => p.Disponibilidade == true);
-
-        var pedidosFinalizados = await finalizados.ToListAsync();
-
-        var pedidosFinalizadosDTO = _mapper.Map<IEnumerable<PedidoDTO>>(pedidosFinalizados);
-
-        return Ok(pedidosFinalizadosDTO);
+        var produtos = await _uof.PedidoRepository.GetPedidoFiltroDataAsync(pedidoFiltroParams);
+        return ObterPedidos(produtos);
     }
 
     [HttpPatch("/Atualiza/{id}")] // Encerra o pedido

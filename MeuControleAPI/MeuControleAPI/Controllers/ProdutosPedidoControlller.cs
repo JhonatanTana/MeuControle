@@ -19,7 +19,6 @@ public class ProdutosPedidoController : Controller {
         _uof = uof;
         _mapper = mapper;
     }
-
     private void UpdatePrecoTotal(ProdutosPedido produtosPedido) {
 
         if (produtosPedido.Produto != null) {
@@ -54,21 +53,19 @@ public class ProdutosPedidoController : Controller {
         return Ok(pPedidoCriado);
     }
 
-    [HttpGet("{id:int}")] // recupera produtos pelo ID do pedido
+    [HttpGet("Pedido/{id:int}")] // recupera produtos pelo ID do pedido
     public async Task<ActionResult<ProdutosPedidoDTO>> Get(int id) {
 
-        var pedido = await _uof.ProdutosPedidoRepository.GetAsync(
-            p => p.PedidoId == id,
-            i => i.Include(pp => pp.Produto)
-        );
+        var pedido = await _uof.ProdutosPedidoRepository.GetAllQueryableAsync();
 
+        var filtro = pedido.Include(p => p.Produto).Where(p => p.PedidoId == id);
 
         if (pedido is null) {
 
             return BadRequest("Produtos nao encontrado");
         }
 
-        var produtosPedido = _mapper.Map<ProdutosPedidoDTO>(pedido);
+        var produtosPedido = _mapper.Map<IEnumerable<ProdutosPedidoDTO>>(filtro);
         return Ok(produtosPedido);
     }
 

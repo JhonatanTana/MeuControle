@@ -22,25 +22,6 @@ public class ProdutoController : Controller {
         _mapper = mapper;
     }
 
-    private ActionResult<IEnumerable<ProdutoDTO>> ObterProdutos(IPagedList<ProdutoDTO> produtos) {
-
-        var metadata = new {
-            produtos.Count,
-            produtos.PageSize,
-            produtos.PageCount,
-            produtos.TotalItemCount,
-            produtos.HasNextPage,
-            produtos.HasPreviousPage
-        };
-
-        Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
-
-        var produtosDto = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
-
-        return Ok(produtosDto);
-    }
-
-
     [HttpPost] // cria uma categoria
     public async Task<ActionResult<ProdutoDTO>> Post(ProdutoDTO produtos) {
 

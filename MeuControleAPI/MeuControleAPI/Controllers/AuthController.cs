@@ -17,14 +17,13 @@ public class AuthController : ControllerBase {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _configuration;
-    private readonly ILogger<AuthController> _logger;
 
-    public AuthController(ITokenService tokenService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, ILogger<AuthController> logger) {
+    public AuthController(ITokenService tokenService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration) {
+
         _tokenService = tokenService;
         _userManager = userManager;
         _roleManager = roleManager;
         _configuration = configuration;
-        _logger = logger;
     }
 
     [HttpPost]
@@ -169,12 +168,10 @@ public class AuthController : ControllerBase {
 
             if (roleResult.Succeeded) {
 
-                _logger.LogInformation(1, "Regra Adicionada");
                 return StatusCode(StatusCodes.Status200OK, new Response { Status = "Success", Message = $"Regra {roleName} adicionada com sucesso " });
             }
             else {
 
-                _logger.LogInformation(2, "Erro ao adicionar regra");
                 return StatusCode(StatusCodes.Status400BadRequest, new Response { Status = "Error", Message = $"Erro ao adicionar a regra {roleName}" });
             }
         }
@@ -195,12 +192,10 @@ public class AuthController : ControllerBase {
 
             if (result.Succeeded) {
 
-                _logger.LogInformation(1, $"Adicionado a regra {roleName} ao usuario {user.UserName}");
                 return StatusCode(StatusCodes.Status200OK, new Response { Status = "Success", Message = $"Adicionado a regra {roleName} ao usuario {user.UserName}" });
             }
             else {
 
-                _logger.LogInformation(2, $"Erro ao adicionar a regra {roleName} ao usuario {user.UserName}");
                 return StatusCode(StatusCodes.Status400BadRequest, new Response { Status = "Error", Message = $"Erro ao adicionar a regra {roleName} ao usuario {user.UserName}" });
             }
         }

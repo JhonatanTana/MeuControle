@@ -16,7 +16,7 @@ public class Pedido {
     public int Mesa { get; set; }
 
     [Required]
-    public DateTime Data { get; set; }
+    public DateOnly Data { get; set; }
 
     [Column(TypeName = "decimal(10,2)")]
     public decimal ValorTotal { get; set; }

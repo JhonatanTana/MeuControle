@@ -2,7 +2,6 @@
 using MeuControleAPI.DTOs;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuControleAPI.Controllers;

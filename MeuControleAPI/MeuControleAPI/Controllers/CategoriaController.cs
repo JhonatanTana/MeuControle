@@ -1,15 +1,9 @@
 ﻿using AutoMapper;
-using MeuControleAPI.Context;
 using MeuControleAPI.DTOs;
-using MeuControleAPI.DTOs.Mapping;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using X.PagedList;
 
 namespace MeuControleAPI.Controllers;
 
@@ -24,23 +18,6 @@ public class CategoriaController : Controller {
 
         _uof = uof;
         _mapper = mapper;
-    }
-
-    private ActionResult<IEnumerable<CategoriaDTO>> ObterCategorias(IPagedList<Categoria> categorias) {
-        var metadata = new {
-            categorias.Count,
-            categorias.PageSize,
-            categorias.PageCount,
-            categorias.TotalItemCount,
-            categorias.HasNextPage,
-            categorias.HasPreviousPage
-        };
-
-        Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metadata));
-
-        var categoriasDto = _mapper.Map<IEnumerable<CategoriaDTO>>(categorias);
-
-        return Ok(categoriasDto);
     }
 
     [HttpPost] // cria uma categoria
