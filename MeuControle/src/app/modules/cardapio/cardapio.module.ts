@@ -14,11 +14,11 @@ import { AcoesComponent } from './components/acoes/acoes.component';
     TabelaProdutosComponent,
     AcoesComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(CARDAPIO_ROUTES),
-        SharedModule,
-        FaIconComponent,
-    ]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(CARDAPIO_ROUTES),
+    SharedModule,
+    FaIconComponent,
+  ]
 })
 export class CardapioModule { }

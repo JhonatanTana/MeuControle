@@ -11,7 +11,7 @@ describe('CardapioComponent', () => {
       declarations: [CardapioComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(CardapioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

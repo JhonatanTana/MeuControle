@@ -15,7 +15,14 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+// CORS
+
+builder.Services.AddCors(options =>
+   options.AddDefaultPolicy(
+   policy => {
+       policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+   })
+);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "MeuControleAPI", Version = "v1" });
@@ -123,6 +130,11 @@ if (app.Environment.IsDevelopment()) {
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors();
+
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

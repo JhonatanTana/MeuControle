@@ -1,21 +1,21 @@
 <div class="login-container">
   <div class="container-content">
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
       <div class="logo">
         <img src="" alt="Logo">
       </div>
 
       <div class="input-content">
         <div class="input-section">
-          <input type="text" placeholder="usuario" id="user" name="username" class="input">
+          <input type="text" placeholder="usuario" id="user" name="username" class="input" formControlName="UserName">
           <label for="user" class="input-label">Usuário</label>
         </div>
         <div class="input-section">
-          <input type="password" placeholder="senha" id="password" name="password" class="input">
+          <input type="password" placeholder="senha" id="password" name="password" class="input" formControlName="password">
           <label for="password" class="input-label">Senha</label>
         </div>
       </div>
-      <button class="btn-submit">LOGIN</button>
+      <button type="submit" class="btn-submit" [disabled]="!this.loginForm.valid">LOGIN</button>
     </form>
   </div>
 </div>

@@ -11,7 +11,7 @@ describe('HistoricoComponent', () => {
       declarations: [HistoricoComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(HistoricoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

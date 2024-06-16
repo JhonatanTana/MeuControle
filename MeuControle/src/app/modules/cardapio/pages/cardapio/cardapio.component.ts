@@ -1,19 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cardapio',
   templateUrl: './cardapio.component.html',
-  styleUrl: './cardapio.component.css'
+  styleUrl: './cardapio.component.scss'
 })
-export class CardapioComponent implements OnInit, OnDestroy {
-
-  faPenToSquare = faPenToSquare;
-
-  ngOnDestroy(): void {
-  }
-
-  ngOnInit(): void {
-  }
+export class CardapioComponent {
 
 }

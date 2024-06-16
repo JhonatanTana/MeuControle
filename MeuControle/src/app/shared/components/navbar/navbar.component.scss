@@ -13,7 +13,6 @@ nav {
   &:hover .logo {
     width: 150px;
   }
-
   &:hover .logo fa-icon {
     display: none;
   }
@@ -24,7 +23,7 @@ nav {
     display: block;
   }
   &:hover ul li {
-    width: 80%;
+    width: 95%;
   }
 }
 
@@ -69,7 +68,7 @@ ul li {
   display: flex;
   padding: .7em;
   margin: .5em 0;
-  width: 45%;
+  width: 90%;
   cursor: pointer;
   color: var(--white);
   border-radius: 32px;

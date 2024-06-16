@@ -40,7 +40,6 @@ public class ProdutoController : Controller {
             new { id = novoProdutoDto.ProdutoId }, novoProdutoDto);
     }
 
-    [Authorize]
     [HttpGet] // recupera todos os produtos
     public async Task<ActionResult<ProdutoDTO>> Get() {
 

@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: var(--primary-color);
+  background: var(--primaria);
 }
 
 .container-content {
@@ -30,7 +30,7 @@ form {
 
 .logo {
   position: absolute;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--primaria);
 }
 
 .logo img {
@@ -41,7 +41,7 @@ form {
 .input-content {
   width: 90%;
   height: 70%;
-  margin-top: 100px;
+  margin-top: 75px;
 }
 
 .input-section {
@@ -51,36 +51,33 @@ form {
 }
 
 .input {
-  border: none;
-  border-bottom: 1px solid var(--light-gray);
+  position: relative;
+  border: 2px solid var(--light-gray);
+  border-radius: 8px;
   padding: 3%;
   outline: none;
   transition: 0.2s ease;
-}
-
-.input:focus, .input:hover {
-  border-bottom-color: var(--primary-color) ;
-}
-
-.input::placeholder {
-  color: transparent;
-}
-
-.input:not(:placeholder-shown) ~ .input-label,
-.input:focus ~ .input-label {
-  top: 1%;
-  left: -3%;
-  font-weight: 500;
-  transform: scale(.9);
-  color: var(--primary-color);
+  &:hover, &:focus,  {
+    border-color: var(--primaria)
+  }
+  &::placeholder {
+    color: transparent;
+  }
+  &:hover ~ .input-label, &:focus ~ .input-label{
+    color: var(--primaria);
+  }
 }
 
 .input-label {
+text-align: center;
   position: relative;
-  top: 5vh;
-  left: 3%;
+  top: 2vh;
+  left: 1vh;
+  width: 25%;
+  background: var(--white);
   user-select: none;
-  transition: .4s ease-in-out;
+  font-weight: 500;
+  transform: scale(.9);
 }
 
 .btn-submit {
@@ -88,7 +85,7 @@ form {
   width: 60%;
   border: none;
   border-radius: 8px;
-  background: var(--primary-color);
+  background: var(--primaria);
   color: var(--white);
   font-weight: 600;
   cursor: pointer;
@@ -97,4 +94,9 @@ form {
 
 .btn-submit:hover {
   transform: scale(1.05);
+}
+
+.btn-submit:disabled {
+  background: var(--secundaria);
+  transform: none;
 }

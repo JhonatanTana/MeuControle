@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tabela-produtos',
   templateUrl: './tabela-produtos.component.html',
-  styleUrl: './tabela-produtos.component.css'
+  styleUrl: './tabela-produtos.component.scss'
 })
 export class TabelaProdutosComponent {
-
-  faPenToSquare = faPenToSquare
 
 }

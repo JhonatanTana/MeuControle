@@ -4,7 +4,7 @@ import { faArrowRightFromBracket, faBars,  faChartLine,  faClipboardList,  faClo
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
   faChartLine = faChartLine
