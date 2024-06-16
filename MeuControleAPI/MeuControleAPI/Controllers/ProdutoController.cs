@@ -57,7 +57,7 @@ public class ProdutoController : Controller {
     }
 
     [Authorize]
-    [HttpGet] // recupera todos os produtos
+    [HttpGet("Disponivel")] // recupera todos os produtos
     public async Task<ActionResult<ProdutoDTO>> GetDisponiveis() {
 
         var produtos = await _uof.ProdutoRepository.GetAllQueryableAsync();

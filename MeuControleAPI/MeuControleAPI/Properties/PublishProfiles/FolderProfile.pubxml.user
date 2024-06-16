@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\Publicacao</_PublishTargetUrl>
-    <History>True|2024-06-10T15:11:43.6329265Z;False|2024-06-10T12:11:09.9509641-03:00;False|2024-06-10T12:10:17.6532795-03:00;</History>
+    <History>True|2024-06-16T02:49:30.0572651Z||;True|2024-06-15T23:21:03.4529954-03:00||;True|2024-06-15T18:30:09.8545118-03:00||;True|2024-06-10T12:11:43.6329265-03:00||;False|2024-06-10T12:11:09.9509641-03:00||;False|2024-06-10T12:10:17.6532795-03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

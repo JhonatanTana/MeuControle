@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Globalization;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -38,7 +39,25 @@ builder.Services.AddSwaggerGen(c => {
     }});
 });
 
-// Tratamento de Excessoes e Ignorando Ciclos de Repetição
+// Configurando a cultura padrão para pt-BR
+var cultureInfo = new CultureInfo("pt-BR");
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+// Identity Framework
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
+
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 3;
+    options.Password.RequiredUniqueChars = 1;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
+// Ignorando Ciclos de Repetição
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
         options.JsonSerializerOptions.
@@ -53,9 +72,6 @@ builder.Services.AddScoped<IFormaPagamentoRepository, FormaPagamentoRepository>(
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-
-// Identity Framework
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 // Conexao Banco de Dados
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -87,11 +103,6 @@ builder.Services.AddAuthentication(options => {
 builder.Services.AddAuthorization(options => {
 
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-    options.AddPolicy("SuperAdminOnly", policy => policy.RequireRole("Admin").RequireClaim("id", "usuario"));
-    options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
-    options.AddPolicy("ExclusiveOnly", policy => policy.RequireAssertion(
-        context => context.User.HasClaim(
-            claim => claim.Type == "id" && claim.Value == "usuario") || context.User.IsInRole("SuperAdmin")));
 });
 
 // AutoMapper

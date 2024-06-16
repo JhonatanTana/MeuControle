@@ -26,7 +26,7 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost]
-    [Route("login")] // Realiza a validacao do usuario
+    [Route("Login")] // Realiza a validacao do usuario
     public async Task<IActionResult> Login([FromBody] LoginModel model) {
         var user = await _userManager.FindByNameAsync(model.UserName!);
 
@@ -71,7 +71,7 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost]
-    [Route("register")] // Registra o usuario
+    [Route("Register")] // Registra o usuario
     public async Task<IActionResult> Register([FromBody] RegisterModel model) {
 
         var userExists = await _userManager.FindByNameAsync(model.Username!);
@@ -99,7 +99,7 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost]
-    [Route("refresh-token")] // Atualiza o token
+    [Route("RefreshToken")] // Atualiza o token
     public async Task<IActionResult> RefreshToken(TokenModel tokenModel) {
 
         if (tokenModel is null) {
@@ -140,7 +140,7 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost]
-    [Authorize(Policy = "ExclusiveOnly")]
+    [Authorize(Policy = "Admin")]
     [Route("Revoke/{username}")] // Deleta o refresh token 
     public async Task<IActionResult> Revoke(string username) {
         var user = await _userManager.FindByNameAsync(username);
@@ -155,7 +155,7 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost]
-    [Authorize(Policy = "SuperAdminOnly")]
+    [Authorize(Policy = "Admin")]
     [Route("CreateRole")] // Cria regras
     public async Task<IActionResult> CreateRole(string roleName) {
 
@@ -179,7 +179,7 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost]
-    [Authorize(Policy = "SuperAdminOnly")]
+    [Authorize(Policy = "Admin")]
     [Route("AddUserToRole")] // Define a regra ao usuario
     public async Task<IActionResult> AddUserToRole(string email, string roleName) {
 
