@@ -1,1 +1,16 @@
-<p>tabela-produtos works!</p>
+<section class="produtos">
+  <details *ngFor="let card of cardapio" >
+    <summary class="cabecario">{{ card.nome }}</summary>
+    <div class="categoria-content">
+      <div class="categoria-produtos" *ngFor="let produto of card.produtos">
+        <span>{{ produto.nome }}</span>
+        <span>{{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}</span>
+        <div class="produtos-action">
+          <fa-icon [icon]="faPenToSquare"></fa-icon>
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </details>
+</section>
+

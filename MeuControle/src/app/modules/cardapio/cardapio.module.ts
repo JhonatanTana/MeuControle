@@ -7,6 +7,10 @@ import { SharedModule } from "../../shared/shared.module";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { TabelaProdutosComponent } from "./components/tabela-produtos/tabela-produtos.component";
 import { AcoesComponent } from './components/acoes/acoes.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { PrimeTemplate } from "primeng/api";
+import { Ripple } from "primeng/ripple";
+import { TooltipModule } from "primeng/tooltip";
 
 @NgModule({
   declarations: [
@@ -19,6 +23,11 @@ import { AcoesComponent } from './components/acoes/acoes.component';
     RouterModule.forChild(CARDAPIO_ROUTES),
     SharedModule,
     FaIconComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    PrimeTemplate,
+    Ripple,
+    TooltipModule,
   ]
 })
 export class CardapioModule { }

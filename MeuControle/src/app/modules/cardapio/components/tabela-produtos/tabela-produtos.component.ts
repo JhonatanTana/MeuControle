@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { CardapioResponse } from "../../../../models/interface/cardapio/cardapio-response";
 
 @Component({
   selector: 'app-tabela-produtos',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './tabela-produtos.component.scss'
 })
 export class TabelaProdutosComponent {
+  @Input() cardapio: Array<CardapioResponse> = []
+
+  faPenToSquare = faPenToSquare
+  faTrash = faTrash
 
 }

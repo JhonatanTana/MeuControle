@@ -1,5 +1,6 @@
 ﻿using MeuControleAPI.Models;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MeuControleAPI.DTOs;
 public class CategoriaDTO {
@@ -9,5 +10,5 @@ public class CategoriaDTO {
     [StringLength(80)] // DataAnnotations
     public string? Nome { get; set; }
     public bool Disponibilidade { get; set; }
-    public List<Produto>? Produtos { get; set; }
+    public IEnumerable<Produto>? Produtos { get; set; }
 }

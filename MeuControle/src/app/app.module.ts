@@ -13,6 +13,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ToastModule } from "primeng/toast";
 import { CookieService } from "ngx-cookie-service";
 import { MessageService } from "primeng/api";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MessageService } from "primeng/api";
     ReactiveFormsModule,
     HttpClientModule,
     ToastModule,
+    BrowserAnimationsModule,
   ],
   providers: [CookieService,MessageService],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { LoginUsuarioRequest } from "../../models/interface/usuario/login-usuari
 import { CookieService } from "ngx-cookie-service";
 import { MessageService } from "primeng/api";
 import { Router } from "@angular/router";
+import { LoginUsuarioResponse } from "../../models/interface/usuario/login-usuario-response";
 
 @Component({
   selector: 'app-home',
@@ -31,13 +32,14 @@ export class HomeComponent {
       this.usuarioService.login(this.loginForm.value as LoginUsuarioRequest).subscribe(
         { next: (response) => {
             this.cookieService.set("UserInfo", response?.token);
+            this.cookieService.set("UserExpiration", response.expiration!);
             this.loginForm.reset();
             this.router.navigate(['/dashboard'])
 
             this.messageService.add({
               severity: 'success',
               summary: 'Sucesso',
-              detail: `Bem-Vindo ${response?.UserName}`,
+              detail: `Bem-Vindo ${response?.nome}`,
               life: 2000,
             })
           },

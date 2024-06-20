@@ -1,3 +1,4 @@
+using Autofac.Core;
 using MeuControleAPI.Context;
 using MeuControleAPI.DTOs.Mapping;
 using MeuControleAPI.Models;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System.Globalization;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -68,7 +70,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
         options.JsonSerializerOptions.
-            ReferenceHandler = ReferenceHandler.IgnoreCycles).AddNewtonsoftJson();
+          ReferenceHandler = ReferenceHandler.IgnoreCycles).AddNewtonsoftJson();
+builder.Services.AddControllers()
+        .AddNewtonsoftJson(options => {
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        });
 
 // Repositórios
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();

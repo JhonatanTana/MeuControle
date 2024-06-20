@@ -1,5 +1,5 @@
 export interface LoginUsuarioResponse {
-  UserName:string
+  nome:string
   token: string;
   refreshToken: string;
   expiration: string

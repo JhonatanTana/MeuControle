@@ -30,18 +30,16 @@ form {
 
 .logo {
   position: absolute;
-  border: 1px solid var(--primaria);
 }
 
 .logo img {
-  width: 200px;
   height: 100px;
 }
 
 .input-content {
   width: 90%;
   height: 70%;
-  margin-top: 75px;
+  margin-top: 110px;
 }
 
 .input-section {
@@ -69,11 +67,11 @@ form {
 }
 
 .input-label {
-text-align: center;
+  text-align: center;
   position: relative;
   top: 2vh;
   left: 1vh;
-  width: 25%;
+  width: 4.5rem;
   background: var(--white);
   user-select: none;
   font-weight: 500;
