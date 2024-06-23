@@ -1,0 +1,23 @@
+<form [formGroup]="categoriaForm" (ngSubmit)="handleSubmitAddCategoria()" *ngIf="categoriaAction?.event?.action === cadastrarCategoriaAction">
+  <div class="input-section">
+    <input type="text" id="categoria" class="input" formControlName="Nome">
+    <label for="categoria" class="input-label">Categoria</label>
+  </div>
+  <div class="input-checkbox">
+    <label for="disponibilidade">Disponível</label>
+    <p-inputSwitch id="disponibilidade" formControlName="Disponibilidade"/>
+  </div>
+  <button type="submit" [disabled]="!this.categoriaForm.valid">Confirmar</button>
+</form>
+
+<form [formGroup]="editCategoriaForm" (ngSubmit)="handleSubmitEditCategoria()" *ngIf="categoriaAction?.event?.action === editCategoriaAction">
+  <div class="input-section">
+    <input type="text" id="edit-categoria" class="input" formControlName="Nome">
+    <label for="edit-categoria" class="input-label">Categoria</label>
+  </div>
+  <div class="input-checkbox">
+    <label for="edit-disponibilidade">Disponível</label>
+    <p-inputSwitch id="edit-disponibilidade" formControlName="Disponibilidade"/>
+  </div>
+  <button type="submit" [disabled]="!this.editCategoriaForm.valid">Confirmar</button>
+</form>

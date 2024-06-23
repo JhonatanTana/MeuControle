@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\models\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\models\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\dtos\\produtodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\dtos\\produtodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\dtos\\categoriadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\dtos\\categoriadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -34,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,84 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Program.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Program.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Program.cs",
-              "RelativeToolTip": "MeuControleAPI\\Program.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAAAEkAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T00:07:12.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProdutoDTO.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\ProdutoDTO.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\DTOs\\ProdutoDTO.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\ProdutoDTO.cs",
-              "RelativeToolTip": "MeuControleAPI\\DTOs\\ProdutoDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T00:06:30.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Produto.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Produto.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Models\\Produto.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Produto.cs",
-              "RelativeToolTip": "MeuControleAPI\\Models\\Produto.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAUwBIAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T00:06:26.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Categoria.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Categoria.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Models\\Categoria.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Categoria.cs",
-              "RelativeToolTip": "MeuControleAPI\\Models\\Categoria.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T00:04:34.695Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoriaDTO.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\CategoriaDTO.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\DTOs\\CategoriaDTO.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\CategoriaDTO.cs",
-              "RelativeToolTip": "MeuControleAPI\\DTOs\\CategoriaDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T00:04:26.847Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CategoriaController.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\CategoriaController.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\CategoriaController.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\CategoriaController.cs",
-              "RelativeToolTip": "MeuControleAPI\\Controllers\\CategoriaController.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAA1wFwAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T00:02:17.416Z",
-              "EditorCaption": ""
             }
           ]
         }

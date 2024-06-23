@@ -1,16 +1,36 @@
+<section class="actions">
+  <p-button label="Adicionar Categoria" severity="secondary" icon="pi pi-plus" (onClick)="handleCategoriaEvent(addCategoria)" />
+  <p-button label="Adicionar Produto" icon="pi pi-plus" (onClick)="handleProdutoEvent(addProduto)"/>
+</section>
+
 <section class="produtos">
-  <details *ngFor="let card of cardapio" >
-    <summary class="cabecario">{{ card.nome }}</summary>
-    <div class="categoria-content">
-      <div class="categoria-produtos" *ngFor="let produto of card.produtos">
-        <span>{{ produto.nome }}</span>
-        <span>{{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}</span>
-        <div class="produtos-action">
-          <fa-icon [icon]="faPenToSquare"></fa-icon>
-          <fa-icon [icon]="faTrash"></fa-icon>
-        </div>
-      </div>
+  <div class="produto-container" *ngFor="let card of cardapio">
+    <h3>
+      {{ card.nome }}
+      <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" severity="contrast" (click)="handleCategoriaEvent(editCategoria, card.categoriaId)" />
+    </h3>
+    <div class="produto-content">
+      <ng-container *ngFor="let produto of card.produtos">
+        <p-card header="{{ produto.nome }}" [style]="{ width: '15rem', margin: '.5rem', 'box-shadow' : '0 0 10px 0px rgb(0, 0, 0, .2)' }">
+          <ng-template pTemplate="header">
+            <div style=" display: flex; justify-content: center ">
+              <img alt="Card" src="sem-foto.jpg" style=" width:200px; height:200px; border-radius: 8px 8px 0 0" />
+            </div>
+          </ng-template>
+          <p style="display: flex; justify-content: space-between; margin-top: 0;">
+            <span *ngIf="produto.disponibilidade === true" style="color: #16a34a"> Disponivel</span>
+            <span *ngIf="produto.disponibilidade === false" style="color: #dc2626"> Indisponivel</span>
+            {{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}
+          </p>
+          <ng-template pTemplate="footer">
+            <div class="flex mt-1">
+              <p-button icon="pi pi-trash" severity="danger" (click)="handleDeleteProduto(produto.produtoId, produto.nome)"/>
+              <p-button label="Editar" (click)="handleProdutoEvent(editProduto, produto.produtoId)"/>
+            </div>
+          </ng-template>
+        </p-card>
+      </ng-container>
     </div>
-  </details>
+  </div>
 </section>
 

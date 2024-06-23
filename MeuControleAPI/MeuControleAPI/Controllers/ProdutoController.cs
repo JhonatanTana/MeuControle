@@ -4,6 +4,7 @@ using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MeuControleAPI.Controllers;
 
@@ -43,14 +44,16 @@ public class ProdutoController : Controller {
     [HttpGet] // recupera todos os produtos
     public async Task<ActionResult<ProdutoDTO>> Get() {
 
-        var produtos = await _uof.ProdutoRepository.GetAllAsync();
+        var produtos = await _uof.ProdutoRepository.GetAllQueryableAsync();
+
+        var filtro = produtos.Include(c => c.Categorias).ToList();
 
         if (produtos is null) {
 
             return BadRequest("Produtos nao eoncontrado");
         }
 
-        var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
+        var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(filtro);
 
         return Ok(produtosDTO);
     }
@@ -128,6 +131,6 @@ public class ProdutoController : Controller {
 
         var produtoDeletado = _mapper.Map<ProdutoDTO>(deletado);
 
-        return NoContent();
+        return Ok(produtoDeletado);
     }
 }

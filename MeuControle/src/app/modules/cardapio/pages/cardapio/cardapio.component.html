@@ -1,2 +1,10 @@
 <app-navbar></app-navbar>
-<app-tabela-produtos [cardapio]="cardapioList" ></app-tabela-produtos>
+<div class="container">
+  <app-tabela-produtos
+    [cardapio]="cardapioList"
+    (categoriaEvent)="handleCategoriaAction($event)"
+    (produtoEvent)="handleProdutoAction($event)"
+    (deleteprodutoEvent)="handleDeleteProdutoAction($event)"
+  ></app-tabela-produtos>
+  <p-confirmDialog [style]="{ width: '52vw' }"></p-confirmDialog>
+</div>

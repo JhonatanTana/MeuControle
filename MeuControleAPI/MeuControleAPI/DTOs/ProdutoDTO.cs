@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MeuControleAPI.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MeuControleAPI.DTOs;
 public class ProdutoDTO {

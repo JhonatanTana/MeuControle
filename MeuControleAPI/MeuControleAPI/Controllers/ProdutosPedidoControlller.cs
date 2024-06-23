@@ -88,6 +88,6 @@ public class ProdutosPedidoController : Controller {
 
         var pedidoDeletado = _mapper.Map<ProdutosPedidoDTO>(deletado);
 
-        return NoContent();
+        return Ok(pedidoDeletado);
     }
 }

@@ -17,4 +17,7 @@ public class Produto {
     public decimal Preco { get; set; }
     public bool Disponibilidade { get; set; }
     public int CategoriaId { get; set; }
+
+    [JsonIgnore]
+    public ICollection<Categoria> Categorias { get; set; }
 }

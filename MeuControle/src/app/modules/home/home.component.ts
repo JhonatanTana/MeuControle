@@ -5,7 +5,6 @@ import { LoginUsuarioRequest } from "../../models/interface/usuario/login-usuari
 import { CookieService } from "ngx-cookie-service";
 import { MessageService } from "primeng/api";
 import { Router } from "@angular/router";
-import { LoginUsuarioResponse } from "../../models/interface/usuario/login-usuario-response";
 
 @Component({
   selector: 'app-home',
