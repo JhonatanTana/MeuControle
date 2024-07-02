@@ -8,7 +8,7 @@ import { CardapioResponse } from "../../../../models/interface/cardapio/cardapio
 import { ProdutoRequest } from "../../../../models/interface/produto/produto-request";
 import { CategoriaService } from "../../../../services/categoria/categoria.service";
 import { Subject, takeUntil } from "rxjs";
-import { DynamicDialogConfig } from "primeng/dynamicdialog";
+import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
 import { EventAction } from "../../../../models/interface/event/event-action";
 import { ProdutoResponse } from "../../../../models/interface/produto/produto-response";
 import { ProdutosDataTransferService } from "../../../../shared/services/produto/produtos-data-transfer.service";
@@ -56,6 +56,8 @@ export class ProdutoComponent implements OnInit, OnDestroy{
     private route: Router,
     private categoriaService: CategoriaService,
     public ref: DynamicDialogConfig,
+    public dialogRef: DynamicDialogRef,
+
   ) {  }
 
   ngOnInit(): void {
@@ -103,6 +105,7 @@ export class ProdutoComponent implements OnInit, OnDestroy{
             detail: 'Produto criado com sucesso',
             life: 2000
           })
+          this.dialogRef.close()
         },
         error: (err) => {
           this.messageService.add({
@@ -132,9 +135,7 @@ export class ProdutoComponent implements OnInit, OnDestroy{
             detail: 'Produto editado com sucesso',
             life: 2000
           })
-          this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.route.navigate(['/cardapio']); // Navega para a mesma rota (/cardapio)
-          });
+          this.dialogRef.close()
         },
         error: (err) => {
           this.messageService.add({

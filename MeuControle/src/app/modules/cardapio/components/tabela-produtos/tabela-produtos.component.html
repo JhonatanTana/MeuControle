@@ -4,33 +4,27 @@
 </section>
 
 <section class="produtos">
-  <div class="produto-container" *ngFor="let card of cardapio">
-    <h3>
-      {{ card.nome }}
-      <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" severity="contrast" (click)="handleCategoriaEvent(editCategoria, card.categoriaId)" />
-    </h3>
     <div class="produto-content">
-      <ng-container *ngFor="let produto of card.produtos">
-        <p-card header="{{ produto.nome }}" [style]="{ width: '15rem', margin: '.5rem', 'box-shadow' : '0 0 10px 0px rgb(0, 0, 0, .2)' }">
+      <ng-container *ngFor="let card of cardapio">
+        <p-card header="{{ card.nome }}" [style]="{ width: '15rem', margin: '.5rem', 'box-shadow' : '0 0 10px 0px rgb(0, 0, 0, .2)' }">
           <ng-template pTemplate="header">
             <div style=" display: flex; justify-content: center ">
               <img alt="Card" src="sem-foto.jpg" style=" width:200px; height:200px; border-radius: 8px 8px 0 0" />
             </div>
           </ng-template>
           <p style="display: flex; justify-content: space-between; margin-top: 0;">
-            <span *ngIf="produto.disponibilidade === true" style="color: #16a34a"> Disponivel</span>
-            <span *ngIf="produto.disponibilidade === false" style="color: #dc2626"> Indisponivel</span>
-            {{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}
+            <span *ngIf="card.disponibilidade === true" style="color: #16a34a"> Disponivel</span>
+            <span *ngIf="card.disponibilidade === false" style="color: #dc2626"> Indisponivel</span>
+            {{ card.preco | currency:'BRL':'symbol':'1.2-2' }}
           </p>
           <ng-template pTemplate="footer">
             <div class="flex mt-1">
-              <p-button icon="pi pi-trash" severity="danger" (click)="handleDeleteProduto(produto.produtoId, produto.nome)"/>
-              <p-button label="Editar" (click)="handleProdutoEvent(editProduto, produto.produtoId)"/>
+              <p-button icon="pi pi-trash" severity="danger" (click)="handleDeleteProduto(card.produtoId, card.nome)"/>
+              <p-button label="Editar" (click)="handleProdutoEvent(editProduto, card.produtoId)"/>
             </div>
           </ng-template>
         </p-card>
       </ng-container>
     </div>
-  </div>
 </section>
 

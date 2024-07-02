@@ -129,3 +129,4 @@ D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Rel
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\MeuControleAPI.pdb
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\MeuControleAPI.genruntimeconfig.cache
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\ref\MeuControleAPI.dll
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Release\net8.0\Swashbuckle.AspNetCore.Annotations.dll

@@ -1,4 +1,3 @@
-D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\web.config
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\appsettings.Development.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\appsettings.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\MeuControleAPI.exe
@@ -129,3 +128,5 @@ D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Deb
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.pdb
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\MeuControleAPI.genruntimeconfig.cache
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Debug\net8.0\ref\MeuControleAPI.dll
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\bin\Debug\net8.0\web.config

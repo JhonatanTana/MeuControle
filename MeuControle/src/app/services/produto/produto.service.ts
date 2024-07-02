@@ -12,7 +12,6 @@ import { EditProdutoRequest } from "../../models/interface/produto/edit-produto-
   providedIn: 'root'
 })
 export class ProdutoService {
-
   private apiUrl = environment.API_URL;
   private token = this.cookie.get("UserInfo")
   private httpOptions = {
@@ -28,8 +27,10 @@ export class ProdutoService {
   ) { }
 
   getProduto():Observable<Array<ProdutoResponse>> {
-
     return this.http.get<Array<ProdutoResponse>>(`${this.apiUrl}/Produto`,this.httpOptions)
+  }
+  getProdutoAtivo():Observable<Array<ProdutoResponse>> {
+    return this.http.get<Array<ProdutoResponse>>(`${this.apiUrl}/Produto/Disponivel`,this.httpOptions)
   }
   cadastrarProduto(requestData:ProdutoRequest){
     return this.http.post<ProdutoResponse>(`${this.apiUrl}/Produto`, requestData,this.httpOptions)

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CardapioResponse } from "../../../../models/interface/cardapio/cardapio-response";
 import { EventAction } from "../../../../models/interface/event/event-action";
 import { ProdutoEvent } from "../../../../models/enums/produto-event";
 import { DeleteProdutoAction } from "../../../../models/interface/event/delete-produto-action";
 import { CategoriaEvent } from "../../../../models/enums/categoria-event";
+import { ProdutoResponse } from "../../../../models/interface/produto/produto-response";
 
 @Component({
   selector: 'app-tabela-produtos',
@@ -11,7 +11,7 @@ import { CategoriaEvent } from "../../../../models/enums/categoria-event";
   styleUrl: './tabela-produtos.component.scss'
 })
 export class TabelaProdutosComponent {
-  @Input() cardapio: Array<CardapioResponse> = []
+  @Input() cardapio: Array<ProdutoResponse> = []
   @Output() produtoEvent = new EventEmitter<EventAction>();
   @Output() deleteprodutoEvent = new EventEmitter<DeleteProdutoAction>();
   @Output() categoriaEvent = new EventEmitter<EventAction>();

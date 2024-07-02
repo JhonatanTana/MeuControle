@@ -76,13 +76,18 @@ public class PedidosController : Controller {
     [Authorize]
     [HttpGet] // recupera todos os pedidos
     public async Task<ActionResult<IEnumerable<PedidoDTO>>> Get() {
-        var pedidos = await _uof.PedidoRepository.GetAllAsync();
+        var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
+
+        var filtro = pedidos.Include(p => p.ProdutosPedido);
 
         if (pedidos == null || !pedidos.Any()) {
-            return BadRequest("Pedido nao encontrado");
+            return NotFound("Nenhum pedido encontrado");
         }
 
-        var pedidoDTOs = _mapper.Map<IEnumerable<PedidoDTO>>(pedidos);
+        var pedidoDTOs = _mapper.Map<IEnumerable<PedidoDTO>>(filtro);
+        foreach (var pedidoDTO in pedidoDTOs) {
+            CalcularValorTotal(pedidoDTO); // Chamando para cada pedidoDTO individual
+        }
 
         return Ok(pedidoDTOs);
     }

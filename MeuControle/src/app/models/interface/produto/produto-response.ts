@@ -3,5 +3,6 @@ export interface ProdutoResponse {
   nome:string,
   preco:number,
   disponibilidade:boolean,
-  categoriaId: number
+  categoriaId: number,
+  imagemUrl: string
 }

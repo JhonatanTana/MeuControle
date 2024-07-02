@@ -1,0 +1,14 @@
+.table-content {
+  width: 95vw;
+  height: 80vh;
+  padding: 3vh;
+}
+
+.filtro {
+  border-radius: 8px;
+  border: 1px solid var(--primaria);
+  padding: .5rem;
+  user-select: none;
+  outline: none;
+  margin-right: 1rem;
+}

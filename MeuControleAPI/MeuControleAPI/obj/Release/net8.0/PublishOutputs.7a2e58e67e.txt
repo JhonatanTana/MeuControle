@@ -33,6 +33,7 @@ D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Rel
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\Pomelo.EntityFrameworkCore.MySql.dll
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Annotations.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

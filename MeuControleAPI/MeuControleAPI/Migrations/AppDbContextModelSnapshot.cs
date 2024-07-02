@@ -22,6 +22,21 @@ namespace MeuControleAPI.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("CategoriaProduto", b =>
+                {
+                    b.Property<int>("CategoriasCategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProdutosProdutoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoriasCategoriaId", "ProdutosProdutoId");
+
+                    b.HasIndex("ProdutosProdutoId");
+
+                    b.ToTable("CategoriaProduto");
+                });
+
             modelBuilder.Entity("MeuControleAPI.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -181,6 +196,10 @@ namespace MeuControleAPI.Migrations
                     b.Property<bool>("Disponibilidade")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<byte[]>("ImagemUrl")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -190,8 +209,6 @@ namespace MeuControleAPI.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.HasKey("ProdutoId");
-
-                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Produtos");
                 });
@@ -357,6 +374,21 @@ namespace MeuControleAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CategoriaProduto", b =>
+                {
+                    b.HasOne("MeuControleAPI.Models.Categoria", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriasCategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MeuControleAPI.Models.Produto", null)
+                        .WithMany()
+                        .HasForeignKey("ProdutosProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MeuControleAPI.Models.Pedido", b =>
                 {
                     b.HasOne("MeuControleAPI.Models.FormaPagamento", "FormaPagamento")
@@ -364,17 +396,6 @@ namespace MeuControleAPI.Migrations
                         .HasForeignKey("FormaPagamentoPagamentoId");
 
                     b.Navigation("FormaPagamento");
-                });
-
-            modelBuilder.Entity("MeuControleAPI.Models.Produto", b =>
-                {
-                    b.HasOne("MeuControleAPI.Models.Categoria", "Categoria")
-                        .WithMany("Produtos")
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categoria");
                 });
 
             modelBuilder.Entity("MeuControleAPI.Models.ProdutosPedido", b =>
@@ -443,11 +464,6 @@ namespace MeuControleAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("MeuControleAPI.Models.Categoria", b =>
-                {
-                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("MeuControleAPI.Models.Pedido", b =>

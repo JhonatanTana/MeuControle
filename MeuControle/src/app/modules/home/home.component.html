@@ -15,7 +15,13 @@
           <label for="password" class="input-label">Senha</label>
         </div>
       </div>
-      <button type="submit" class="btn-submit" [disabled]="!this.loginForm.valid">LOGIN</button>
+      <!--<button type="submit" class="btn-submit" [disabled]="!this.loginForm.valid">LOGIN</button>-->
+      <p-button
+        [disabled]="!this.loginForm.valid"
+        type="submit"
+        label="Login"
+        [loading]="loading"
+        (onClick)="load()" />
     </form>
   </div>
 </div>

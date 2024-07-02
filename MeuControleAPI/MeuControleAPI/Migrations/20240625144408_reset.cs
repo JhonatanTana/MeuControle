@@ -1,19 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MeuControleAPI.Migrations {
+namespace MeuControleAPI.Migrations
+{
     /// <inheritdoc />
-    public partial class Restart : Migration {
+    public partial class reset : Migration
+    {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder) {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.AlterDatabase()
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
-                columns: table => new {
+                columns: table => new
+                {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
@@ -23,14 +28,16 @@ namespace MeuControleAPI.Migrations {
                     ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
-                columns: table => new {
+                columns: table => new
+                {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RefreshToken = table.Column<string>(type: "longtext", nullable: true)
@@ -59,41 +66,68 @@ namespace MeuControleAPI.Migrations {
                     LockoutEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Categoria",
-                columns: table => new {
+                columns: table => new
+                {
                     CategoriaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Disponibilidade = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_Categoria", x => x.CategoriaId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "FormaPagamento",
-                columns: table => new {
+                columns: table => new
+                {
                     PagamentoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Disponibilidade = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_FormaPagamento", x => x.PagamentoId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Produtos",
+                columns: table => new
+                {
+                    ProdutoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Preco = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Disponibilidade = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CategoriaId = table.Column<int>(type: "int", nullable: false),
+                    ImagemUrl = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produtos", x => x.ProdutoId);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
-                columns: table => new {
+                columns: table => new
+                {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -103,7 +137,8 @@ namespace MeuControleAPI.Migrations {
                     ClaimValue = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
@@ -116,7 +151,8 @@ namespace MeuControleAPI.Migrations {
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
-                columns: table => new {
+                columns: table => new
+                {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -126,7 +162,8 @@ namespace MeuControleAPI.Migrations {
                     ClaimValue = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
@@ -139,7 +176,8 @@ namespace MeuControleAPI.Migrations {
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
-                columns: table => new {
+                columns: table => new
+                {
                     LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProviderKey = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -149,7 +187,8 @@ namespace MeuControleAPI.Migrations {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
@@ -162,13 +201,15 @@ namespace MeuControleAPI.Migrations {
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
-                columns: table => new {
+                columns: table => new
+                {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RoleId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
@@ -187,7 +228,8 @@ namespace MeuControleAPI.Migrations {
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
-                columns: table => new {
+                columns: table => new
+                {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -197,7 +239,8 @@ namespace MeuControleAPI.Migrations {
                     Value = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
@@ -209,41 +252,21 @@ namespace MeuControleAPI.Migrations {
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Produtos",
-                columns: table => new {
-                    ProdutoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Preco = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Disponibilidade = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    CategoriaId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table => {
-                    table.PrimaryKey("PK_Produtos", x => x.ProdutoId);
-                    table.ForeignKey(
-                        name: "FK_Produtos_Categoria_CategoriaId",
-                        column: x => x.CategoriaId,
-                        principalTable: "Categoria",
-                        principalColumn: "CategoriaId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Pedido",
-                columns: table => new {
+                columns: table => new
+                {
                     PedidoId = table.Column<int>(type: "int(5)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Mesa = table.Column<int>(type: "int(4)", nullable: false),
-                    Data = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Data = table.Column<DateOnly>(type: "date", nullable: false),
                     ValorTotal = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Disponibilidade = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     FormaPagamentoPagamentoId = table.Column<int>(type: "int", nullable: true)
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_Pedido", x => x.PedidoId);
                     table.ForeignKey(
                         name: "FK_Pedido_FormaPagamento_FormaPagamentoPagamentoId",
@@ -254,27 +277,56 @@ namespace MeuControleAPI.Migrations {
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "CategoriaProduto",
+                columns: table => new
+                {
+                    CategoriasCategoriaId = table.Column<int>(type: "int", nullable: false),
+                    ProdutosProdutoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoriaProduto", x => new { x.CategoriasCategoriaId, x.ProdutosProdutoId });
+                    table.ForeignKey(
+                        name: "FK_CategoriaProduto_Categoria_CategoriasCategoriaId",
+                        column: x => x.CategoriasCategoriaId,
+                        principalTable: "Categoria",
+                        principalColumn: "CategoriaId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CategoriaProduto_Produtos_ProdutosProdutoId",
+                        column: x => x.ProdutosProdutoId,
+                        principalTable: "Produtos",
+                        principalColumn: "ProdutoId",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "ProdutosPedido",
-                columns: table => new {
+                columns: table => new
+                {
                     ProdutosPedidoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     PrecoTotal = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    ProdutoId = table.Column<int>(type: "int", nullable: true),
-                    PedidoId = table.Column<int>(type: "int(5)", nullable: true)
+                    ProdutoId = table.Column<int>(type: "int", nullable: false),
+                    PedidoId = table.Column<int>(type: "int(5)", nullable: false)
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_ProdutosPedido", x => x.ProdutosPedidoId);
                     table.ForeignKey(
                         name: "FK_ProdutosPedido_Pedido_PedidoId",
                         column: x => x.PedidoId,
                         principalTable: "Pedido",
-                        principalColumn: "PedidoId");
+                        principalColumn: "PedidoId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProdutosPedido_Produtos_ProdutoId",
                         column: x => x.ProdutoId,
                         principalTable: "Produtos",
-                        principalColumn: "ProdutoId");
+                        principalColumn: "ProdutoId",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -316,14 +368,14 @@ namespace MeuControleAPI.Migrations {
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_CategoriaProduto_ProdutosProdutoId",
+                table: "CategoriaProduto",
+                column: "ProdutosProdutoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Pedido_FormaPagamentoPagamentoId",
                 table: "Pedido",
                 column: "FormaPagamentoPagamentoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Produtos_CategoriaId",
-                table: "Produtos",
-                column: "CategoriaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProdutosPedido_PedidoId",
@@ -337,7 +389,8 @@ namespace MeuControleAPI.Migrations {
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder) {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -354,6 +407,9 @@ namespace MeuControleAPI.Migrations {
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CategoriaProduto");
+
+            migrationBuilder.DropTable(
                 name: "ProdutosPedido");
 
             migrationBuilder.DropTable(
@@ -363,6 +419,9 @@ namespace MeuControleAPI.Migrations {
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Categoria");
+
+            migrationBuilder.DropTable(
                 name: "Pedido");
 
             migrationBuilder.DropTable(
@@ -370,9 +429,6 @@ namespace MeuControleAPI.Migrations {
 
             migrationBuilder.DropTable(
                 name: "FormaPagamento");
-
-            migrationBuilder.DropTable(
-                name: "Categoria");
         }
     }
 }

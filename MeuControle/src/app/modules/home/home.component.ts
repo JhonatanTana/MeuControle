@@ -13,6 +13,8 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent {
 
+  loading: boolean = false;
+
   loginForm = this.formBuilder.group({
     UserName: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(3)]],
@@ -25,6 +27,14 @@ export class HomeComponent {
     private messageService: MessageService,
     private router: Router
   ) {}
+
+  load() {
+    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false
+    }, 2000);
+  }
 
   onSubmitLoginForm(): void {
     if (this.loginForm.value && this.loginForm.valid) { //verifica se o formulário e valida e possui valor
