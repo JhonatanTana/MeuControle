@@ -1,1 +1,10 @@
-<p>conclui-pedido works!</p>
+<div class="model">
+  <form [formGroup]="concluiPedidoForm" (ngSubmit)="concluirPedido()">
+    <h4 style="margin-top: 0">Selecione a Forma de Pagamento</h4>
+    <div class="input-section" *ngFor="let pagamento of pagamentoList">
+      <label class="input-label">{{ pagamento.nome }}</label>
+      <input type="radio" name="formaPagamento" value="{{ pagamento.nome }}" formControlName="formaPagamento">
+    </div>
+    <p-button type="submit" [style]="{'margin-top': '1.5rem'}">Enviar</p-button>
+  </form>
+</div>

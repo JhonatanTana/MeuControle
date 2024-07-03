@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MeuControleAPI.DTOs.Request;
+using MeuControleAPI.DTOs.Resposta;
 using MeuControleAPI.Models;
 
 namespace MeuControleAPI.DTOs.Mapping;
@@ -11,5 +12,6 @@ public class PedidoDTOMappingProfile : Profile {
         CreateMap<ProdutosPedido, ProdutosPedidoDTO>().ReverseMap();
         CreateMap<FormaPagamento, FormaPagamentoDTO>().ReverseMap();
         CreateMap<Pedido, PedidoDTOUpdateResquest>().ReverseMap();
+        CreateMap<Pedido, PedidoDTOUpdateResponse>(); 
     }
 }

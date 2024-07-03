@@ -63,14 +63,12 @@ public class FormaPagamentoController : Controller {
 
         var forma = await _uof.FormaPagamentoRepository.GetAllQueryableAsync();
 
-        var filtro = forma.Where(f => f.Disponibilidade == true);
-
         if (forma == null) {
 
             return NotFound("Forma de Pagamento nao encontrada");
         }
 
-        var formaPagamento = _mapper.Map<IEnumerable<FormaPagamentoDTO>>(filtro);
+        var formaPagamento = _mapper.Map<IEnumerable<FormaPagamentoDTO>>(forma);
         return Ok(formaPagamento);
     }
 
@@ -78,7 +76,7 @@ public class FormaPagamentoController : Controller {
     [HttpGet("{id:int}", Name = "ObterFomaPagamento")] // recupera a forma depagamento pelo ID
     public async Task<ActionResult<FormaPagamentoDTO>> Get(int id) {
 
-        var forma = await _uof.FormaPagamentoRepository.GetAsync(p => p.PagamentoId == id);
+        var forma = await _uof.FormaPagamentoRepository.GetAsync(p => p.FormaPagamentoId == id);
 
         if (forma is null) {
 
@@ -87,29 +85,5 @@ public class FormaPagamentoController : Controller {
 
         var formaPagamento = _mapper.Map<FormaPagamentoDTO>(forma);
         return Ok(formaPagamento);
-    }
-
-    [Authorize]
-    [HttpPut] // atualiza a forma de pagamento
-    public async Task<ActionResult<FormaPagamentoDTO>> Put(FormaPagamentoDTO pagamento) {
-
-        if (pagamento == null) {
-
-            return BadRequest("Forma de Pagamento nao existe");
-        }
-
-        var forma = _mapper.Map<FormaPagamento>(pagamento);
-
-        var formaAtualizada = _uof.FormaPagamentoRepository.Update(forma);
-        await _uof.CommitAsync();
-
-        var formaAtualizadaDTO = new FormaPagamentoDTO() {
-
-            PagamentoId = formaAtualizada.PagamentoId,
-            Nome = formaAtualizada.Nome,
-        };
-
-        return new CreatedAtRouteResult("ObterFomaPagamento",
-            new { id = formaAtualizadaDTO.PagamentoId }, formaAtualizadaDTO);
     }
 }

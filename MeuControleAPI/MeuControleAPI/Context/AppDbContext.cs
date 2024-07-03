@@ -11,5 +11,6 @@ namespace MeuControleAPI.Context {
         public DbSet<Produto>? Produtos { get; set; }
         public DbSet<Pedido>? Pedido { get; set; }
         public DbSet<ProdutosPedido>? ProdutosPedido { get; set; }
+        public DbSet<FormaPagamento>? FormaPagamento { get; set; }
     }
 }

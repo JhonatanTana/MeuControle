@@ -54,7 +54,6 @@ public class PedidosController : Controller {
         }
     }
 
-    [Authorize]
     [HttpPost] // cria um novo pedido
     public async Task<ActionResult<PedidoDTO>> Post(PedidoDTO pedidos) {
 
@@ -70,7 +69,7 @@ public class PedidosController : Controller {
         await _uof.CommitAsync();
 
         var pedidoCriado = _mapper.Map<Pedido>(criado);
-        return new CreatedAtRouteResult("ObterPedido", new { id = pedidoCriado.PedidoId }, pedidoCriado);
+        return Ok(pedidoCriado);
     }
 
     [Authorize]
@@ -92,78 +91,63 @@ public class PedidosController : Controller {
         return Ok(pedidoDTOs);
     }
 
-    [Authorize]
-    [HttpGet("Completo/{id:int}", Name = "ObterPedido")] // recupera o pedido e seus produtos pelo ID
-    public async Task<ActionResult<PedidoDTO>> Get(int id) {
 
-        var pedido = await _uof.PedidoRepository.GetAsync(
-            p => p.PedidoId == id,
-            i => i.Include(p => p.ProdutosPedido).ThenInclude(pp => pp.Produto)
-        );
-
-        if (pedido == null) {
-            return NotFound($"Pedido com id={id} não encontrado.");
-        }
-
-        var pedidoDto = _mapper.Map<PedidoDTO>(pedido);
-        CalcularValorTotal(pedidoDto);
-
-        return Ok(pedidoDto);
-    }
-
-    [Authorize]
-    [HttpGet("Produtos")] //recupera todos os pedidos e seus produtos
-    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetProdutosPedidos() {
+    [HttpGet("Abertos")] // recupera todos os pedidos abertos
+    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetAbertos() {
 
         var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
 
-        var pedidosProdutos = await pedidos.Include(p => p.FormaPagamento).Include(pp => pp.ProdutosPedido).ThenInclude(p => p.Produto).ToListAsync();
+        var filtro = pedidos.Include(p => p.ProdutosPedido).Where(pd => pd.Disponibilidade == true);
 
-        var pedidosDTO = _mapper.Map<IEnumerable<PedidoDTO>>(pedidosProdutos);
+        if (pedidos == null || !pedidos.Any()) {
+            return NotFound("Nenhum pedido encontrado");
+        }
 
-        return Ok(pedidosDTO);
+        var pedidoDTOs = _mapper.Map<IEnumerable<PedidoDTO>>(filtro);
+        foreach (var pedidoDTO in pedidoDTOs) {
+            CalcularValorTotal(pedidoDTO); // Chamando para cada pedidoDTO individual
+        }
+
+        return Ok(pedidoDTOs);
     }
 
     [Authorize]
-    [HttpGet("Paginado/Abertos")] // recupera todos os pedidos abertos
-    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetAbertos([FromQuery] PedidoParameters pedidoParameters) {
+    [HttpGet("Encerrados")] // recupera todos os pedidos fechados e filtra por data
+    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetEncerrados() {
 
-        var pedidos = await _uof.PedidoRepository.GetPedidoAbertosAsync(pedidoParameters);
-        return ObterPedidos(pedidos);
+        var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
+
+        var filtro = pedidos.Include(p => p.ProdutosPedido).Where(pd => pd.Disponibilidade == false);
+
+        if (pedidos == null || !pedidos.Any()) {
+            return NotFound("Nenhum pedido encontrado");
+        }
+
+        var pedidoDTOs = _mapper.Map<IEnumerable<PedidoDTO>>(filtro);
+        foreach (var pedidoDTO in pedidoDTOs) {
+            CalcularValorTotal(pedidoDTO); // Chamando para cada pedidoDTO individual
+        }
+
+        return Ok(pedidoDTOs);
     }
 
-    [Authorize]
-    [HttpGet("Paginado/Encerrados")] // recupera todos os pedidos fechados e filtra por data
-    public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetProdutosFilterPreco([FromQuery] PedidosFiltroData pedidoFiltroParams) {
+    [HttpPatch("/Conclui")] // Encerra o pedido
+    public async Task<ActionResult<PedidoDTOUpdateResponse>> Patch([FromBody] PedidoDTOUpdateResquest patchPedidoDto) {
 
-        var produtos = await _uof.PedidoRepository.GetPedidoFiltroDataAsync(pedidoFiltroParams);
-        return ObterPedidos(produtos);
-    }
-
-    [Authorize]
-    [HttpPatch("/Atualiza/{id}")] // Encerra o pedido
-    public async Task<ActionResult<PedidoDTOUpdateResponse>> Patch(JsonPatchDocument<PedidoDTOUpdateResquest> patchPedidoDto, int id) {
-
-        if (patchPedidoDto == null || id <= 0)
-            return BadRequest();
-
-        var pedido = await _uof.PedidoRepository.GetAsync(c => c.PedidoId == id);
+        var pedido = await _uof.PedidoRepository.GetAsync(c => c.PedidoId == patchPedidoDto.PedidoId);
 
         if (pedido == null)
-            return NotFound("Pedido nao encontrado");
+            return NotFound("Pedido não encontrado");
 
-        var pedidoUpdateRequest = _mapper.Map<PedidoDTOUpdateResquest>(pedido);
-
-        patchPedidoDto.ApplyTo(pedidoUpdateRequest, ModelState);
-
-        if (!ModelState.IsValid || !TryValidateModel(pedidoUpdateRequest))
-            return BadRequest(ModelState);
-
-        _mapper.Map(pedidoUpdateRequest, pedido);
+        pedido.PedidoId = patchPedidoDto.PedidoId;
+        pedido.ValorTotal = patchPedidoDto.ValorTotal;
+        pedido.Disponibilidade = patchPedidoDto.Disponibilidade;
+        pedido.FormaPagamento = patchPedidoDto.FormaPagamento;
 
         _uof.PedidoRepository.Update(pedido);
         await _uof.CommitAsync();
 
-        return Ok(_mapper.Map<PedidoDTOUpdateResquest>(pedido));
+        var pedidoResponse = _mapper.Map<PedidoDTOUpdateResponse>(pedido);
+        return Ok(pedidoResponse);
     }
 }

@@ -5,11 +5,7 @@ export interface PedidoCompletoResponse {
   data: string,
   valorTotal: number,
   disponibilidade: boolean,
-  formaPagamento: {
-    pagamentoId: number,
-    nome: string,
-    disponibilidade: boolean
-  },
+  formaPagamento: string,
   produtosPedido: {
     produtosPedidoId: number,
     quantidade: number,

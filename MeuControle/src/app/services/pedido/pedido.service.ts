@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { Observable } from "rxjs";
 import { PedidoResponse } from "../../models/interface/pedido/pedido-response";
+import { ConcluiPedidoRequest } from "../../models/interface/pedido/conclui-pedido-request";
+import { ProdutoResponse } from "../../models/interface/produto/produto-response";
+import { PedidoRequest } from "../../models/interface/pedido/pedido-request";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +28,12 @@ export class PedidoService {
 
   getPedidosAbertos():Observable<Array<PedidoResponse>> {
 
-    return this.http.get<Array<PedidoResponse>>(`${this.apiUrl}/Pedidos`,this.httpOptions)
+    return this.http.get<Array<PedidoResponse>>(`${this.apiUrl}/Pedidos/Abertos`,this.httpOptions)
+  }
+  novoPedido(requestData: PedidoRequest) {
+    return this.http.post<PedidoResponse>(`${this.apiUrl}/Pedidos`, requestData,this.httpOptions)
+  }
+  concluirPedido(requestData:ConcluiPedidoRequest): Observable<void> {
+    return this.http.patch<void>(`${this.apiUrl}/Conclui`, requestData,this.httpOptions)
   }
 }

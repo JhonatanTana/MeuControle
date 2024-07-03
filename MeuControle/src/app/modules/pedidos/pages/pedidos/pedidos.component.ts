@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject, takeUntil } from "rxjs";
 import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
 import { PedidoService } from "../../../../services/pedido/pedido.service";
@@ -9,6 +9,8 @@ import { EventAction } from "../../../../models/interface/event/event-action";
 import { ProdutoListComponent } from "../../components/produto-list/produto-list.component";
 import { ConcluiPedidoComponent } from "../../components/conclui-pedido/conclui-pedido.component";
 import { ProdutoFormComponent } from "../../components/produto-form/produto-form.component";
+import { NovoPedidoFormComponent } from "../../components/novo-pedido-form/novo-pedido-form.component";
+import { PedidoEvent } from "../../../../models/enums/pedido-event";
 
 @Component({
   selector: 'app-pedidos',
@@ -17,6 +19,7 @@ import { ProdutoFormComponent } from "../../components/produto-form/produto-form
 })
 export class PedidosComponent implements OnInit,OnDestroy {
   private readonly destroy$:Subject<void> = new Subject()
+  @Output() pedidoEvent = new EventEmitter<EventAction>();
   public pedidoList: Array<PedidoResponse> = [];
   private ref!: DynamicDialogRef
 
@@ -47,6 +50,22 @@ export class PedidosComponent implements OnInit,OnDestroy {
         })
       }
     })
+  }
+  AdicionarPedido() {
+    this.ref = this.dialogService.open(NovoPedidoFormComponent, {
+      header: 'Adicionar Pedido',
+      width: '25rem',
+      draggable: true,
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      data: {
+        event: event,
+        pedidoData: this.pedidoList,
+      },
+    });
+    this.ref.onClose.pipe(takeUntil(this.destroy$)).subscribe({
+      next: () => this.getAPIPedidoAbertos(),
+    });
   }
   handlePedidoAction(event: EventAction): void {
     if (event?.action == 'Detalhes do Pedido') {

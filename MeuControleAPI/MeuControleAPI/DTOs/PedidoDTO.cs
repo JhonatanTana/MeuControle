@@ -9,6 +9,6 @@ public class PedidoDTO {
     public DateOnly Data { get; set; }
     public decimal ValorTotal { get; set; }
     public bool Disponibilidade { get; set; }
-    public FormaPagamento? FormaPagamento { get; set; }
-    public ICollection<ProdutosPedido>? ProdutosPedido { get; set; }
+    public string? FormaPagamento { get; set; }
+    public IEnumerable<ProdutosPedido>? ProdutosPedido { get; set; }
 }

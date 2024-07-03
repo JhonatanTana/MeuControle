@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeuControleAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240625145123_teste")]
-    partial class teste
+    [Migration("20240703005430_reset")]
+    partial class reset
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -133,20 +133,17 @@ namespace MeuControleAPI.Migrations
 
             modelBuilder.Entity("MeuControleAPI.Models.FormaPagamento", b =>
                 {
-                    b.Property<int>("PagamentoId")
+                    b.Property<int>("FormaPagamentoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("PagamentoId"));
-
-                    b.Property<bool>("Disponibilidade")
-                        .HasColumnType("tinyint(1)");
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("FormaPagamentoId"));
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("PagamentoId");
+                    b.HasKey("FormaPagamentoId");
 
                     b.ToTable("FormaPagamento");
                 });
@@ -165,22 +162,21 @@ namespace MeuControleAPI.Migrations
                     b.Property<bool>("Disponibilidade")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("FormaPagamentoPagamentoId")
-                        .HasColumnType("int");
+                    b.Property<string>("FormaPagamento")
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Mesa")
                         .HasColumnType("int(4)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
 
                     b.Property<decimal>("ValorTotal")
                         .HasColumnType("decimal(10,2)");
 
                     b.HasKey("PedidoId");
-
-                    b.HasIndex("FormaPagamentoPagamentoId");
 
                     b.ToTable("Pedido");
                 });
@@ -198,10 +194,6 @@ namespace MeuControleAPI.Migrations
 
                     b.Property<bool>("Disponibilidade")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("ImagemUrl")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -390,15 +382,6 @@ namespace MeuControleAPI.Migrations
                         .HasForeignKey("ProdutosProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("MeuControleAPI.Models.Pedido", b =>
-                {
-                    b.HasOne("MeuControleAPI.Models.FormaPagamento", "FormaPagamento")
-                        .WithMany()
-                        .HasForeignKey("FormaPagamentoPagamentoId");
-
-                    b.Navigation("FormaPagamento");
                 });
 
             modelBuilder.Entity("MeuControleAPI.Models.ProdutosPedido", b =>

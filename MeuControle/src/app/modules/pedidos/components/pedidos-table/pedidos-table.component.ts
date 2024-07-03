@@ -23,7 +23,7 @@ export class PedidosTableComponent implements OnInit {
 
   applyFilters(table: any) {
     table.filter(this.nomeSearchValue, 'nome', 'contains');
-    table.filter(this.dataSearchValue, 'data', 'contains');
+    table.filter(this.dataSearchValue, 'mesa', 'contains');
   }
 
   clear(table: Table) {

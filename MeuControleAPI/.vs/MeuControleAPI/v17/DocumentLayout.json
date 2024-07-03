@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\dtos\\pedidodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\dtos\\pedidodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\models\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,15 +34,41 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Pedido.cs",
+              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Pedido.cs",
+              "RelativeDocumentMoniker": "MeuControleAPI\\Models\\Pedido.cs",
+              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Models\\Pedido.cs",
+              "RelativeToolTip": "MeuControleAPI\\Models\\Pedido.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABoAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T03:10:49.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PedidoDTO.cs",
+              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\PedidoDTO.cs",
+              "RelativeDocumentMoniker": "MeuControleAPI\\DTOs\\PedidoDTO.cs",
+              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\PedidoDTO.cs",
+              "RelativeToolTip": "MeuControleAPI\\DTOs\\PedidoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T03:09:21.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PedidosController.cs",
               "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\PedidosController.cs",
               "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\PedidosController.cs",
               "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\PedidosController.cs",
               "RelativeToolTip": "MeuControleAPI\\Controllers\\PedidosController.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAkwFMAAAA2AAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAAiwDcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T00:47:53.27Z",
+              "WhenOpened": "2024-07-03T00:49:25.93Z",
               "EditorCaption": ""
             }
           ]

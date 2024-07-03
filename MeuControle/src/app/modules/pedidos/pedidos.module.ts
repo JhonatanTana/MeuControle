@@ -15,6 +15,7 @@ import { ProdutoFormComponent } from './components/produto-form/produto-form.com
 import { ProdutoListComponent } from './components/produto-list/produto-list.component';
 import { ConcluiPedidoComponent } from './components/conclui-pedido/conclui-pedido.component';
 import { DropdownModule } from "primeng/dropdown";
+import { NovoPedidoFormComponent } from './components/novo-pedido-form/novo-pedido-form.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DropdownModule } from "primeng/dropdown";
     ProdutoFormComponent,
     ProdutoListComponent,
     ConcluiPedidoComponent,
+    NovoPedidoFormComponent,
   ],
   imports: [
     CommonModule,

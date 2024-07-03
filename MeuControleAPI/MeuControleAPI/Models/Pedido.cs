@@ -9,6 +9,7 @@ public class Pedido {
     public int PedidoId { get; set; }
 
     [Required]
+    [StringLength(80)]
     public string Nome { get; set; }
 
     [Required]
@@ -23,6 +24,6 @@ public class Pedido {
 
     [Required]
     public bool Disponibilidade { get; set; }
-    public FormaPagamento? FormaPagamento { get; set; }
+    public string? FormaPagamento { get; set; }
     public ICollection<ProdutosPedido>? ProdutosPedido { get; set; }
 }

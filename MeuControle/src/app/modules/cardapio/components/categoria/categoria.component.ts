@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { CategoriaRequest } from "../../../../models/interface/categoria/categoria-request";
 import { MessageService } from "primeng/api";
 import { CategoriaEvent } from "../../../../models/enums/categoria-event";
-import { DynamicDialogConfig } from "primeng/dynamicdialog";
+import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
 import { Subject, takeUntil } from "rxjs";
 import { EventAction } from "../../../../models/interface/event/event-action";
 import { CategoriaResponse } from "../../../../models/interface/categoria/categoria-response";
@@ -47,6 +47,7 @@ export class CategoriaComponent implements OnInit, OnDestroy{
     private route: Router,
     private messageService: MessageService,
     public ref: DynamicDialogConfig,
+    public dialogRef: DynamicDialogRef,
   ) { }
 
   ngOnInit(): void {
@@ -77,6 +78,7 @@ export class CategoriaComponent implements OnInit, OnDestroy{
             detail: 'Categoria cadastrada com sucesso',
             life: 2000
           })
+          this.dialogRef.close()
         },
         error: (err) => {
           this.messageService.add({
@@ -104,9 +106,7 @@ export class CategoriaComponent implements OnInit, OnDestroy{
             detail: 'Categoria editada com sucesso',
             life: 2000
           })
-          this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.route.navigate(['/cardapio']); // Navega para a mesma rota (/cardapio)
-          });
+          this.dialogRef.close()
         },
         error: (err) => {
           this.messageService.add({
