@@ -54,6 +54,7 @@ public class PedidosController : Controller {
         }
     }
 
+    [Authorize]
     [HttpPost] // cria um novo pedido
     public async Task<ActionResult<PedidoDTO>> Post(PedidoDTO pedidos) {
 
@@ -91,7 +92,7 @@ public class PedidosController : Controller {
         return Ok(pedidoDTOs);
     }
 
-
+    [Authorize]
     [HttpGet("Abertos")] // recupera todos os pedidos abertos
     public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetAbertos() {
 
@@ -131,6 +132,26 @@ public class PedidosController : Controller {
         return Ok(pedidoDTOs);
     }
 
+    [Authorize]
+    [HttpGet("Completo/{id:int}", Name = "ObterPedido")] // recupera o pedido e seus produtos pelo ID
+    public async Task<ActionResult<PedidoDTO>> Get(int id) {
+
+        var pedido = await _uof.PedidoRepository.GetAsync(
+            p => p.PedidoId == id,
+            i => i.Include(p => p.ProdutosPedido).ThenInclude(pp => pp.Produto)
+        );
+
+        if (pedido == null) {
+            return NotFound($"Pedido com id={id} não encontrado.");
+        }
+
+        var pedidoDto = _mapper.Map<PedidoDTO>(pedido);
+        CalcularValorTotal(pedidoDto);
+
+        return Ok(pedidoDto);
+    }
+
+    [Authorize]
     [HttpPatch("/Conclui")] // Encerra o pedido
     public async Task<ActionResult<PedidoDTOUpdateResponse>> Patch([FromBody] PedidoDTOUpdateResquest patchPedidoDto) {
 

@@ -1,0 +1,15 @@
+<div>
+  <ul>
+    <li style="background: #e8e8e8; font-weight: bold; align-items: start;">
+      <span>Produto</span>
+      <span>Quant</span>
+      <span>Valor</span>
+      <span></span>
+    </li>
+    <li *ngFor="let pedido of produtoPedidoList">
+      <p>{{ pedido.produtos.nome }}</p>
+      <span>{{ pedido.quantidade }} unid.</span>
+      <span>{{ pedido.precoTotal | currency: 'BRL' }}</span>
+    </li>
+  </ul>
+</div>

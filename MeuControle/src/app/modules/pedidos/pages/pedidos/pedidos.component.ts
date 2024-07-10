@@ -10,7 +10,6 @@ import { ProdutoListComponent } from "../../components/produto-list/produto-list
 import { ConcluiPedidoComponent } from "../../components/conclui-pedido/conclui-pedido.component";
 import { ProdutoFormComponent } from "../../components/produto-form/produto-form.component";
 import { NovoPedidoFormComponent } from "../../components/novo-pedido-form/novo-pedido-form.component";
-import { PedidoEvent } from "../../../../models/enums/pedido-event";
 
 @Component({
   selector: 'app-pedidos',

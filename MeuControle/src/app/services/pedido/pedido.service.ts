@@ -7,6 +7,7 @@ import { PedidoResponse } from "../../models/interface/pedido/pedido-response";
 import { ConcluiPedidoRequest } from "../../models/interface/pedido/conclui-pedido-request";
 import { ProdutoResponse } from "../../models/interface/produto/produto-response";
 import { PedidoRequest } from "../../models/interface/pedido/pedido-request";
+import { PedidoCompletoResponse } from "../../models/interface/pedido/pedido-completo-response";
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,13 @@ export class PedidoService {
   ) { }
 
   getPedidosAbertos():Observable<Array<PedidoResponse>> {
-
     return this.http.get<Array<PedidoResponse>>(`${this.apiUrl}/Pedidos/Abertos`,this.httpOptions)
+  }
+  getPedidosEncerrados():Observable<Array<PedidoResponse>> {
+    return this.http.get<Array<PedidoResponse>>(`${this.apiUrl}/Pedidos/Encerrados`,this.httpOptions)
+  }
+  getPedidoCompleto(id: number):Observable<Array<PedidoCompletoResponse>> {
+    return this.http.get<Array<PedidoCompletoResponse>>(`${this.apiUrl}/Pedidos/Completo/${id}`,this.httpOptions)
   }
   novoPedido(requestData: PedidoRequest) {
     return this.http.post<PedidoResponse>(`${this.apiUrl}/Pedidos`, requestData,this.httpOptions)

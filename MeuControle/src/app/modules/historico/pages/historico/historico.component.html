@@ -1,1 +1,8 @@
 <app-navbar></app-navbar>
+<div class="container">
+  <app-historico-table
+    [pedido]="pedidoList"
+    (pedidoEvent)="handlePedidoAction($event)">
+  </app-historico-table>
+</div>
+<p-confirmDialog [style]="{ width: '52vw' }"></p-confirmDialog>
