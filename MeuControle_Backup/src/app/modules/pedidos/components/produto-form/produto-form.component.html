@@ -1,0 +1,15 @@
+<div class="model">
+  <form [formGroup]="produtoPedidoForm" (ngSubmit)="handleAdicionarProduto()">
+    <div class="input-section">
+      <select id="Produto" formControlName="produtoId">
+        <option *ngFor="let produto of produtoList" value="{{ produto.produtoId }}">{{ produto.nome }}</option>
+      </select>
+      <label for="Produto" class="input-label" style="width: 6.5rem;">Produto</label>
+    </div>
+    <div class="input-section">
+      <input type="number" id="quantidade" class="input" formControlName="quantidade">
+      <label id="quantidade-label" for="quantidade" class="input-label">Quantidade</label>
+    </div>
+    <p-button type="submit" [style]="{'margin-top': '1rem'}">Adicionar</p-button>
+  </form>
+</div>

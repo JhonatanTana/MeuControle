@@ -1,1 +1,35 @@
 <app-navbar></app-navbar>
+<div class="container">
+  <div class="container-content">
+    <div class="vendas">
+      <h3>Vendas do Dia</h3>
+      <span>{{ valorTotalDia | currency: 'BRL' }}</span>
+    </div>
+    <div class="vendas">
+      <h3>Vendas do Mês</h3>
+      <span>{{ valorTotalMes | currency: 'BRL' }}</span>
+    </div>
+    <div class="vendas reduzido" >
+      <!-- Alterar para Quantidade de Pedidos em Aberto e Encerrado -->
+      <h3>Pedidos Aberto</h3>
+      <span *ngFor="let pedido of PedidosAberto"> {{ pedido.quantidade }} </span>
+    </div>
+    <div class="vendas reduzido">
+      <!-- Alterar para Quantidade de Pedidos em Aberto e Encerrado -->
+      <h3>Pedidos Concluídos</h3>
+      <span *ngFor="let pedido of PedidosEncerrados"> {{ pedido.quantidade }} </span>
+    </div>
+  </div>
+  <div class="graficos">
+    <div class="graficos-content">
+      <p-chart type="bar" [data]="chartData" [options]="chartOptions" [style]="{ 'width': '10rem' }"></p-chart>
+    </div>
+    <div class="graficos-content">
+      <p-chart type="bar" [data]="chartDataPagamento" [options]="chartOptionsPagamento" [style]="{ width: '10rem' }"></p-chart>
+    </div>
+    <div class="graficos-content">
+      <p-chart type="bar" [data]="chartDataMes" [options]="chartOptionsMes" [style]="{ width: '10rem' }"></p-chart>
+    </div>
+  </div>
+
+</div>

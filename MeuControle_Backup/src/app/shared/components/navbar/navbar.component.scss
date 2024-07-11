@@ -1,0 +1,101 @@
+nav {
+  position: fixed;
+  width: 60px;
+  height: 100vh;
+  background-color: var(--primaria);
+  transition:width .3s ease;
+  z-index: 2;
+  &:hover {
+    width:150px;
+    box-shadow: 0px 0px 10px 100vw var(--shadow);
+  }
+  &:hover .logo {
+    width: 8.5rem;
+  }
+  &:hover .logo fa-icon {
+    display: none;
+  }
+  &:hover .logo h3 {
+    display: block;
+  }
+  &:hover > ul li span {
+    display: block;
+  }
+  &:hover ul li {
+    width: 95%;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 72px;
+  padding-top: 1em;
+  padding-bottom: .5em;
+  position: relative;
+  left: .2em;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.logo-img {
+  position: relative;
+  left: .5em;
+  width: 35px;
+  height: 42px;
+}
+
+.logo h3 {
+  display: none;
+  padding-left: 1em;
+  font-size: 1em;
+  user-select: none;
+}
+
+ul {
+  padding-top: .5em;
+  padding-left: .5em;
+  list-style-type: none;
+  height: 87vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.li-content {
+  display: flex;
+  position: relative;
+  left: .2em;
+}
+
+ul li {
+  display: flex;
+  padding: .7em;
+  margin: .5em 0;
+  width: 90%;
+  cursor: pointer;
+  color: var(--white);
+  border-radius: 32px;
+  user-select: none;
+  transition:opacity .3s ease;
+}
+
+ul li span {
+  padding-left: .5em;
+  display: none;
+  font-weight: 500;
+}
+
+ul li:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.active {
+  background-color: var(--white);
+}
+
+.active-icon, .active-span {
+  color: var(--black);
+}

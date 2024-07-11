@@ -1,0 +1,80 @@
+.actions {
+  padding: 1rem;
+}
+
+.actions p-button {
+  margin: .5rem;
+}
+
+.produtos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+
+.produtos details {
+  width: 95%;
+}
+
+.produto-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.produto-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.produtos div p-button {
+  margin: .25rem;
+}
+
+.cabecario {
+  display: list-item;
+  cursor: pointer;
+  margin: 1%;
+  padding: 1%;
+  border-radius: 8px;
+  background: var(--primaria);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.categoria-content {
+  background: var(--secundaria);
+  width: 96%;
+  margin-top: -1%;
+  margin-left: 2%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.categoria-produtos {
+  display: grid;
+  grid-template-columns: 2fr 1fr .25fr;
+  padding: 1%;
+  color: var(--white);
+  font-size: 18px;
+  align-items: center;
+  justify-content: space-between;
+  justify-items: start;
+}
+
+.categoria-produtos span, .produtos-action  {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.produtos-action {
+  justify-content: space-around;
+}
+
+.produtos-action fa-icon {
+  cursor: pointer;
+}

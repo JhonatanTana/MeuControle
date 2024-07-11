@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "primeicons/primeicons.css";
+
+:root {
+  --primaria: rebeccapurple;
+  --white: #ffff;
+  --black: #000000;
+  --shadow: rgb(0,0,0, .5);
+  --light-gray: #8e8e8e;
+  --secundaria: rgba(102, 51, 153, .4);
+  --terciaria: #c5c5c5;
+  --success: rgba(50, 205, 50, 0.7);
+  --enable-1: white;
+  --enable-2: limegreen;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: Poppins, sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  left: 60px;
+  width: 95%;
+  height: 99.8vh;
+  margin-left: .5%;
+}
+
+.p-toast .p-toast-message .p-toast-message-content .p-toast-detail {
+  margin: 0.5rem 0 0 0;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+  margin: 0 0 0 0.5rem;
+}
+.p-toast .p-toast-message .p-toast-message-content {
+  padding: 0.75rem;
+  border-width: 1px;
+}

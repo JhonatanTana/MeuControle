@@ -56,6 +56,26 @@ public class ProdutosPedidoController : Controller {
     }
 
     [Authorize]
+    [HttpGet("Dashboard")] // recupera todos os produtos pedidos
+    public async Task<ActionResult<IEnumerable<ProdutosPedidoDTO>>> GetPedidos() {
+        var pedidos = await _uof.ProdutosPedidoRepository.GetAllQueryableAsync();
+
+        if (pedidos == null || !pedidos.Any()) {
+            return BadRequest("Produtos não encontrados");
+        }
+
+        var produtosAgrupados = pedidos
+            .GroupBy(p => p.ProdutoId) // Agrupa pelos IDs dos produtos
+            .Select(g => new ProdutosPedidoDTO {
+                Quantidade = g.Sum(p => p.Quantidade), // Soma a quantidade de todos os produtos iguais
+                ProdutoId = g.Key, // Chave do grupo é o ProdutoId
+                Produtos = g.First().Produto // Pode variar conforme lógica de agrupamento
+            });
+
+        return Ok(produtosAgrupados);
+    }
+
+    [Authorize]
     [HttpGet("Pedido/{id:int}")] // recupera produtos pelo ID do pedido
     public async Task<ActionResult<ProdutosPedidoDTO>> Get(int id) {
 

@@ -1,0 +1,27 @@
+.container-content {
+  display: flex;
+  padding: 1rem;
+}
+
+.vendas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 8px;
+  width: 30%;
+  height: 15vh;
+  // background-color: #F8F7F3;
+  border:1px solid #8e8e8e;
+  box-shadow: 0 0 10px 2px rgb(0, 0, 0, .1);
+}
+
+.vendas h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.vendas span {
+  font-size: 1.2rem;
+}

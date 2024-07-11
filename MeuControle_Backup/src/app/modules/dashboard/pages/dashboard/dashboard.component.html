@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="container-content">
+    <div class="vendas">
+      <h3>Vendas do Dia</h3>
+      <span>{{ valorTotalDia | currency: 'BRL' }}</span>
+    </div>
+    <div class="vendas">
+      <h3>Vendas do Mês</h3>
+      <span>{{ valorTotalMes | currency: 'BRL' }}</span>
+    </div>
+    <div class="vendas">
+      <h3>Total de Vendas Feitas</h3>
+      <span>{{ valorTotal | currency: 'BRL' }}</span>
+    </div>
+  </div>
+</div>

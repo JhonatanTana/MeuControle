@@ -1,0 +1,43 @@
+.container-content {
+  display: flex;
+  padding: 1rem;
+}
+
+.vendas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 8px;
+  width: 30%;
+  height: 15vh;
+  border:1px solid #8e8e8e;
+  user-select: none;
+  // background-color: #F8F7F3;
+  //box-shadow: 0 0 10px 2px rgb(0, 0, 0, .1);
+}
+
+.reduzido {
+  width: 15%;
+}
+
+.vendas h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.vendas span {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.graficos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.graficos-content {
+  width: 45%;
+  margin: 2.5% 1.5%;
+}

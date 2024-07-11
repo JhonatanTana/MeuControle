@@ -1,0 +1,18 @@
+div {
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+  height: 50vh;
+  list-style-type: none;
+  overflow: auto;
+}
+
+li {
+  border-bottom: 1px solid gray;
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 1fr;
+  align-items: center;
+  padding: .5rem ;
+}

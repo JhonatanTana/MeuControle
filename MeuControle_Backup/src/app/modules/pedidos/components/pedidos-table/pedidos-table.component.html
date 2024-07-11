@@ -1,0 +1,98 @@
+<div class="table-content">
+  <p-table
+    [value]="pedido"
+    [paginator]="true"
+    [rows]="10"
+    [rowsPerPageOptions]="[10, 20, 30]"
+    [globalFilterFields]="['nome', 'data']"
+    #dt1
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <span>
+          <input
+            class="filtro"
+            pInputText
+            type="text"
+            [(ngModel)]="nomeSearchValue"
+            (input)="applyFilters(dt1)"
+            placeholder="Procurar Pedido" />
+          <input
+            class="filtro"
+            pInputText
+            type="number"
+            [(ngModel)]="dataSearchValue"
+            (input)="applyFilters(dt1)"
+            placeholder="Procurar Mesa" />
+        </span>
+        <p-button label="Limpar Filtros" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:7%">
+          Pedido
+        </th>
+        <th style="width:10%">
+          Nome
+          <p-columnFilter type="text" field="nome" display="menu" />
+        </th>
+        <th style="width:7%">
+          Mesa
+          <p-columnFilter type="text" field="mesa" display="menu" />
+        </th>
+        <th style="width:10%">
+          Valor
+        </th>
+        <th style="width:10%">
+          Data
+        </th>
+        <th style="width:7%">
+          Status
+        </th>
+        <th style="width:5%">
+          Ações
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pedido>
+      <tr>
+        <td> {{ '#' + (pedido.pedidoId | number: '3.0-0') }} </td>
+        <td> {{ pedido.nome }} </td>
+        <td> {{ pedido.mesa | number: '2.0-0' }} </td>
+        <td> {{ pedido.valorTotal | currency:'BRL':'symbol':'1.2-2'}} </td>
+        <td> {{ pedido.data | date:'dd/MM/yyyy' }} </td>
+        <td>
+          <span *ngIf="pedido.disponibilidade == true">Aberta</span>
+          <span *ngIf="pedido.disponibilidade == false">Fechada</span>
+        </td>
+        <td>
+          <p-button
+            icon="pi pi-eye"
+            (click)="handlePedidoEvent(addProduto, pedido.pedidoId)"
+            [rounded]="true"
+            [text]="true"
+            [style]="{ width: '1.5rem' }" />
+          <p-button
+            icon="pi pi-plus"
+            (click)="handlePedidoEvent(adicionaProdutoPedido, pedido.pedidoId)"
+            [rounded]="true"
+            [text]="true"
+            [style]="{ width: '1.5rem' }" />
+          <p-button
+            icon="pi pi-check"
+            (click)="handlePedidoEvent(concluiPedido, pedido.pedidoId)"
+            [rounded]="true"
+            [text]="true"
+            [style]="{ width: '1.5rem' }"/>
+          <p-button
+            icon="pi pi-print"
+            (click)="imprimirPedido(pedido.pedidoId)"
+            [rounded]="true"
+            [text]="true"
+            [style]="{ width: '1.5rem' }"/>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

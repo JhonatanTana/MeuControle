@@ -152,6 +152,55 @@ public class PedidosController : Controller {
     }
 
     [Authorize]
+    [HttpGet("Relatorio/FormaPagamento")] // conta todos os pedidos de acordo com a forma de pagamento
+    public async Task<ActionResult<IEnumerable<object>>> GetPagamento() {
+
+        var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
+
+        if (pedidos == null || !pedidos.Any()) {
+            return NotFound("Nenhum pedido encontrado");
+        }
+
+        var filtro = pedidos.Where(pd => pd.Disponibilidade == false && pd.FormaPagamento != null);
+
+        var resultado = filtro.GroupBy(pd => pd.FormaPagamento).Select(g => new { FormaPagamento = g.Key, Quantidade = g.Count() }).ToList();
+
+        return Ok(resultado);
+    }
+
+    [Authorize]
+    [HttpGet("Relatorio/StatusPedido")] // conta todos os pedidos de acordo com o status
+    public async Task<ActionResult<IEnumerable<object>>> GetPedido() {
+
+        var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
+
+        if (pedidos == null || !pedidos.Any()) {
+            return NotFound("Nenhum pedido encontrado");
+        }
+
+        var resultado = pedidos.GroupBy(pd => pd.Disponibilidade).Select(g => new { Disponibilidade = g.Key, Quantidade = g.Count() }).ToList();
+
+        return Ok(resultado);
+    }
+
+    [Authorize]
+    [HttpGet("Relatorio/Pedido/Mes")] // conta todos os pedidos de acordo com o mês
+    public async Task<ActionResult<IEnumerable<object>>> GetPedidoMes() {
+
+        var pedidos = await _uof.PedidoRepository.GetAllQueryableAsync();
+
+        var filtro = pedidos.Where(p => p.Disponibilidade == false);
+
+        if (pedidos == null || !pedidos.Any()) {
+            return NotFound("Nenhum pedido encontrado");
+        }
+
+        var resultado = filtro.GroupBy(pd => new { pd.Data.Month , pd.Data.Year }).Select(g => new { Mes = $"{g.Key.Month}/{g.Key.Year}",Quantidade = g.Count() }).ToList();
+
+        return Ok(resultado);
+    }
+
+    [Authorize]
     [HttpPatch("/Conclui")] // Encerra o pedido
     public async Task<ActionResult<PedidoDTOUpdateResponse>> Patch([FromBody] PedidoDTOUpdateResquest patchPedidoDto) {
 

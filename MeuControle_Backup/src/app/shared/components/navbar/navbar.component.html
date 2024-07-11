@@ -1,0 +1,49 @@
+<nav>
+  <div class="logo" routerLink="/dashboard">
+    <img src="Logo.png" alt="" class="logo-img">
+    <h3 style="color: white">Comanda <span style="color: orangered">App</span></h3>
+  </div>
+  <ul>
+    <div>
+      <li routerLink="/dashboard" routerLinkActive="active">
+        <div class="li-content">
+          <fa-icon [icon]="faChartLine" routerLinkActive="active-icon"></fa-icon>
+          <span routerLinkActive="active-span">Dashboard</span>
+        </div>
+      </li>
+      <li routerLink="/pedidos" routerLinkActive="active">
+        <div class="li-content">
+          <fa-icon [icon]="faList" routerLinkActive="active-icon"></fa-icon>
+          <span routerLinkActive="active-span">Pedidos</span>
+        </div>
+      </li>
+      <li routerLink="/cardapio" routerLinkActive="active">
+        <div class="li-content">
+          <fa-icon [icon]="faRectangleList" routerLinkActive="active-icon"></fa-icon>
+          <span routerLinkActive="active-span">Cardapio</span>
+        </div>
+      </li>
+      <li routerLink="/historico" routerLinkActive="active">
+        <div class="li-content">
+          <fa-icon [icon]="faClockRotateLeft" routerLinkActive="active-icon"></fa-icon>
+          <span routerLinkActive="active-span">Historico</span>
+        </div>
+      </li>
+    </div>
+
+    <div>
+      <li routerLink="/configuracoes" routerLinkActive="active">
+        <div class="li-content">
+          <fa-icon [icon]="faGear" routerLinkActive="active-icon"></fa-icon>
+          <span routerLinkActive="active-span">Configs</span>
+        </div>
+      </li>
+      <li (click)="Logout()">
+        <div class="li-content" >
+          <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+          <span>Sair</span>
+        </div>
+      </li>
+    </div>
+  </ul>
+</nav>
