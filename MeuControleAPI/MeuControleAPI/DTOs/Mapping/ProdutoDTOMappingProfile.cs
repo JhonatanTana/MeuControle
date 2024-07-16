@@ -5,7 +5,11 @@ namespace MeuControleAPI.DTOs.Mapping;
 public class ProdutoDTOMappingProfile : Profile {
     public ProdutoDTOMappingProfile() {
 
-        CreateMap<Produto, ProdutoDTO>().ReverseMap();
-        CreateMap<Categoria, CategoriaDTO>().ReverseMap();
+        CreateMap<Produto, ProdutoDTO>()
+           .ForMember(dest => dest.ImagemUrl, opt => opt.MapFrom(src => src.ImagemUrl));
+
+        CreateMap<ProdutoDTO, Produto>()
+            .ForMember(dest => dest.ImagemUrl, opt => opt.MapFrom(src => src.ImagemUrl));
     }
 }
+

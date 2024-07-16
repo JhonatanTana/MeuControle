@@ -33,4 +33,10 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Uploads\11f13d90-ef54-4cb8-a145-5a741990fece.jpg" />
+    <None Include="wwwroot\Uploads\galinho moana.jfif" />
+    <None Include="wwwroot\Uploads\galinho.jpg" />
+  </ItemGroup>
+
 </Project>

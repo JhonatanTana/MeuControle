@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <app-usuario-table
+    [usuario]="usuarioList"
+    (usuarioEvent)="handleUsuarioAction($event)"
+  ></app-usuario-table>
+</div>
+

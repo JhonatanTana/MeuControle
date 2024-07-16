@@ -1,0 +1,95 @@
+<div class="voltar">
+  <button (click)="voltar()">
+    <i class="pi pi-arrow-left" style="font-size: 1rem"></i>
+    Voltar
+  </button>
+</div>
+<p-table
+  [value]="usuario"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 20, 30]"
+  [globalFilterFields]="['userName', 'email']"
+  [tableStyle]="{'min-height': '5rem'}"
+  #dt1
+>
+  <ng-template pTemplate="caption">
+    <div class="flex">
+        <span>
+          <input
+            class="filtro"
+            pInputText
+            type="text"
+            [(ngModel)]="NomeSearchValue"
+            (input)="applyFilters(dt1)"
+            placeholder="Procurar Usuario" />
+          <input
+            class="filtro"
+            pInputText
+            type="email"
+            [(ngModel)]="EmailSearchValue"
+            (input)="applyFilters(dt1)"
+            placeholder="Procurar Email" />
+        </span>
+      <p-button label="Limpar Filtros" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:10%">
+        Usuário
+        <p-columnFilter type="text" field="userName" display="menu" />
+      </th>
+      <th style="width:7%">
+        Email
+        <p-columnFilter type="text" field="email" display="menu" />
+      </th>
+      <th style="width:5%">
+        Status
+      </th>
+      <th style="width:5%">
+        <p-button (click)="handleUsuarioEvent(addUsuario)">Adicionar</p-button>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-usuario>
+    <tr>
+      <td> {{ usuario.userName }} </td>
+      <td> {{ usuario.email  }} </td>
+      <td>
+        <span style="color: darkred" *ngIf="!usuario.ativo">Inativo</span>
+        <span style="color: darkgreen" *ngIf="usuario.ativo">Ativo</span>
+      </td>
+      <td>
+        <p-button
+          (click)="DeletarUsuario(usuario.id)"
+          icon="pi pi-trash"
+          [rounded]="true"
+          [text]="true"
+          [style]="{ width: '1.5rem', margin: '0 .5rem 0 0', }" />
+        <p-button
+          icon="pi pi-pencil"
+          (click)="handleUsuarioEvent(resetaSenha, usuario.id)"
+          [rounded]="true"
+          [text]="true"
+          [style]="{ width: '1.5rem' }" />
+        <p-button
+          icon="pi pi-check"
+          (click)="InativaUsuario(usuario.id, !usuario.ativo)"
+          [rounded]="true"
+          [text]="true"
+          [style]="{ width: '1.5rem' }"
+          *ngIf="!usuario.ativo"
+        />
+        <p-button
+          icon="pi pi-times"
+          (click)="InativaUsuario(usuario.id, !usuario.ativo)"
+          [rounded]="true"
+          [text]="true"
+          [style]="{ width: '1.5rem' }"
+          *ngIf="usuario.ativo"
+        />
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

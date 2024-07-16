@@ -22,12 +22,24 @@ public class ProdutoController : Controller {
     }
 
     [Authorize]
-    [HttpPost] // cria uma categoria
-    public async Task<ActionResult<ProdutoDTO>> Post(ProdutoDTO produtos) {
-
+    [HttpPost] // cria um produto
+    public async Task<ActionResult<ProdutoDTO>> Post([FromForm] ProdutoDTO produtos, IFormFile file) {
         if (produtos is null) {
+            return BadRequest("Produtos não encontrado");
+        }
 
-            return BadRequest("Produtos nao eoncontrado");
+        if (file != null && file.Length > 0) {
+            var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Uploads");
+
+            if (!Directory.Exists(uploadsFolderPath)) {
+                Directory.CreateDirectory(uploadsFolderPath);
+            }
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var filePath = Path.Combine(uploadsFolderPath, uniqueFileName);
+            using (var fileStream = new FileStream(filePath, FileMode.Create)) {
+                await file.CopyToAsync(fileStream);
+            }
+            produtos.ImagemUrl = $"/Uploads/{uniqueFileName}";
         }
 
         var produto = _mapper.Map<Produto>(produtos);
@@ -41,19 +53,29 @@ public class ProdutoController : Controller {
             new { id = novoProdutoDto.ProdutoId }, novoProdutoDto);
     }
 
+    [Authorize]
     [HttpGet] // recupera todos os produtos
-    public async Task<ActionResult<ProdutoDTO>> Get() {
-
+    public async Task<ActionResult<IEnumerable<ProdutoDTO>>> Get() {
         var produtos = await _uof.ProdutoRepository.GetAllQueryableAsync();
 
         var filtro = produtos.Include(c => c.Categorias).ToList();
 
-        if (produtos is null) {
-
-            return BadRequest("Produtos nao eoncontrado");
+        if (filtro is null || !filtro.Any()) {
+            return BadRequest("Produtos não encontrados");
         }
 
         var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(filtro);
+
+        var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
+
+        foreach (var produtoDto in produtosDTO) {
+            if (string.IsNullOrEmpty(produtoDto.ImagemUrl)) {
+                produtoDto.ImagemUrl = baseUrl + "/Uploads/sem-foto.jpg";
+            }
+            else {
+                produtoDto.ImagemUrl = baseUrl + produtoDto.ImagemUrl;
+            }
+        }
 
         return Ok(produtosDTO);
     }
@@ -73,6 +95,17 @@ public class ProdutoController : Controller {
 
         var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(filtro);
 
+        var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
+
+        foreach (var produtoDto in produtosDTO) {
+            if (string.IsNullOrEmpty(produtoDto.ImagemUrl)) {
+                produtoDto.ImagemUrl = baseUrl + "/Uploads/sem-foto.jpg";
+            }
+            else {
+                produtoDto.ImagemUrl = baseUrl + produtoDto.ImagemUrl;
+            }
+        }
+
         return Ok(produtosDTO);
     }
 
@@ -87,11 +120,20 @@ public class ProdutoController : Controller {
         }
 
         var produtoDto = _mapper.Map<ProdutoDTO>(produto);
+
+        var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
+        if (string.IsNullOrEmpty(produtoDto.ImagemUrl)) {
+            produtoDto.ImagemUrl = baseUrl + "/Uploads/sem-foto.jpg";
+        }
+        else {
+            produtoDto.ImagemUrl = baseUrl + produtoDto.ImagemUrl;
+        }
+
         return Ok(produtoDto);
     }
 
     [Authorize]
-    [HttpPut] // edita um produto
+    [HttpPut] // edita um produto //Alterar para PATCH
     public async Task<ActionResult<ProdutoDTO>> Put(ProdutoDTO produtos) {
 
         if (produtos is null) {

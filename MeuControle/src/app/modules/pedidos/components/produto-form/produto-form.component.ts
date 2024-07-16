@@ -2,14 +2,12 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { Subject, takeUntil } from "rxjs";
 import { EventAction } from "../../../../models/interface/event/event-action";
 import { ProdutoPedidoResponse } from "../../../../models/interface/pedido/produto-pedido-response";
-import { ConfirmationService, MessageService } from "primeng/api";
-import { Router } from "@angular/router";
+import { MessageService } from "primeng/api";
 import { ProdutoPedidoService } from "../../../../services/pedido/produto/produto-pedido.service";
 import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
 import { ProdutoResponse } from "../../../../models/interface/produto/produto-response";
 import { ProdutoService } from "../../../../services/produto/produto.service";
 import { FormBuilder, Validators } from "@angular/forms";
-import { ProdutoRequest } from "../../../../models/interface/produto/produto-request";
 import { CadastroProdutoPedidoRequest } from "../../../../models/interface/pedido/cadastro-produto-pedido-request";
 
 @Component({

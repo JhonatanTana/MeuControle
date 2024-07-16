@@ -112,7 +112,6 @@ public class PedidosController : Controller {
         return Ok(pedidoDTOs);
     }
 
-    [Authorize]
     [HttpGet("Encerrados")] // recupera todos os pedidos fechados e filtra por data
     public async Task<ActionResult<IEnumerable<PedidoDTO>>> GetEncerrados() {
 
@@ -125,9 +124,6 @@ public class PedidosController : Controller {
         }
 
         var pedidoDTOs = _mapper.Map<IEnumerable<PedidoDTO>>(filtro);
-        foreach (var pedidoDTO in pedidoDTOs) {
-            CalcularValorTotal(pedidoDTO); // Chamando para cada pedidoDTO individual
-        }
 
         return Ok(pedidoDTOs);
     }

@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PedidosController.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\PedidosController.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\PedidosController.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\PedidosController.cs",
-              "RelativeToolTip": "MeuControleAPI\\Controllers\\PedidosController.cs",
-              "ViewState": "AQIAAIgAAAAAAAAAAAAwwMUAAABBAAAA",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "MeuControleAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAOkAAAAAAAAAAAAIwAQBAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T21:00:24.352Z",
+              "WhenOpened": "2024-07-16T12:33:42.201Z",
               "EditorCaption": ""
             }
           ]

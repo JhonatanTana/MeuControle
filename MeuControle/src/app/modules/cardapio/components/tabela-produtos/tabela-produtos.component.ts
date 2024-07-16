@@ -4,6 +4,7 @@ import { ProdutoEvent } from "../../../../models/enums/produto-event";
 import { DeleteProdutoAction } from "../../../../models/interface/event/delete-produto-action";
 import { CategoriaEvent } from "../../../../models/enums/categoria-event";
 import { ProdutoResponse } from "../../../../models/interface/produto/produto-response";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-tabela-produtos',
@@ -21,7 +22,9 @@ export class TabelaProdutosComponent {
   public addCategoria = CategoriaEvent.ADD_CATEGORIA_EVENT
   public editCategoria = CategoriaEvent.EDIT_CATEGORIA_EVENT
 
-  constructor( ) { }
+  constructor(
+    private route: Router
+  ) { }
 
   handleProdutoEvent(action: string, id?: number): void {
     if (action && action !== '') {

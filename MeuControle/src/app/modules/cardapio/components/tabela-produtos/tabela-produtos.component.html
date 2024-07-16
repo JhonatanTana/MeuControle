@@ -6,10 +6,10 @@
 <section class="produtos">
     <div class="produto-content">
       <ng-container *ngFor="let card of cardapio">
-        <p-card header="{{ card.nome }}" [style]="{ width: '15rem', margin: '.5rem', 'box-shadow' : '0 0 10px 0px rgb(0, 0, 0, .2)' }">
+        <p-card header="{{ card.nome }}" [style]="{ width: '16rem', margin: '.5rem', 'box-shadow' : '0 0 10px 0px rgb(0, 0, 0, .2)' }">
           <ng-template pTemplate="header">
             <div style=" display: flex; justify-content: center ">
-              <img alt="Card" src="sem-foto.jpg" style=" width:200px; height:200px; border-radius: 8px 8px 0 0" />
+              <img alt="Card" src="{{ card.imagemUrl }}" style=" width:200px; height:200px; margin-top: 1rem; border-radius: 8px" />
             </div>
           </ng-template>
           <p style="display: flex; justify-content: space-between; margin-top: 0;">
@@ -19,8 +19,8 @@
           </p>
           <ng-template pTemplate="footer">
             <div class="flex mt-1">
-              <p-button icon="pi pi-trash" severity="danger" (click)="handleDeleteProduto(card.produtoId, card.nome)"/>
-              <p-button label="Editar" (click)="handleProdutoEvent(editProduto, card.produtoId)"/>
+              <!--<p-button icon="pi pi-trash" severity="danger" (click)="handleDeleteProduto(card.produtoId, card.nome)"/>-->
+              <p-button [style]="{'width': '100%'}" label="Editar" (click)="handleProdutoEvent(editProduto, card.produtoId)"></p-button>
             </div>
           </ng-template>
         </p-card>

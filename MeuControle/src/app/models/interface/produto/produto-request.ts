@@ -3,4 +3,5 @@ export interface ProdutoRequest {
   Preco: number
   Disponibilidade: boolean
   CategoriaId: number,
+  File: File
 }

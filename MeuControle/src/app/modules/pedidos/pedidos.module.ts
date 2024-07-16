@@ -17,7 +17,6 @@ import { ConcluiPedidoComponent } from './components/conclui-pedido/conclui-pedi
 import { DropdownModule } from "primeng/dropdown";
 import { NovoPedidoFormComponent } from './components/novo-pedido-form/novo-pedido-form.component';
 
-
 @NgModule({
   declarations: [
     PedidosComponent,
@@ -38,6 +37,6 @@ import { NovoPedidoFormComponent } from './components/novo-pedido-form/novo-pedi
     DropdownModule,
     ReactiveFormsModule,
   ],
-  providers: [DialogService, ConfirmationService],
+  providers: [DialogService, ConfirmationService]
 })
 export class PedidosModule { }

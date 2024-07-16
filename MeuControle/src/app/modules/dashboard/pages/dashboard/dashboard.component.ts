@@ -99,7 +99,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         if (response) {
           this.PedidosAberto = response.filter(pedido => pedido.disponibilidade);
           this.PedidosEncerrados = response.filter(pedido => !pedido.disponibilidade);
-          console.log(this.PedidosEncerrados)
         }
       }
     });
@@ -140,7 +139,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               }
             }
           };
-          console.log(response)
         }
       },
       error: (err) => {
@@ -189,7 +187,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               }
             }
           };
-          console.log(response)
         }
       },
       error: (err) => {
@@ -238,7 +235,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               }
             }
           };
-          console.log(response)
         }
       },
       error: (err) => {

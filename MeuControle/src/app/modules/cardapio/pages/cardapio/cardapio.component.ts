@@ -125,7 +125,7 @@ export class CardapioComponent implements OnInit,OnDestroy {
   handleDeleteProdutoAction(event: { id: number, nome: string }): void {
     if(event) {
       this.confirmationService.confirm({
-        message: `Confirma a exclusao do produto ${event?.nome} ?`,
+        message: `Confirma a exclusao do produto ${event?.nome} ? <br><br> Isso afetará o historico de Pedidos`,
         header: "Confirmação de Exclusão",
 
         acceptLabel: "Sim",
@@ -145,8 +145,9 @@ export class CardapioComponent implements OnInit,OnDestroy {
               detail: "Produto deletado com sucesso",
               life: 2000
             });
-            this.getAPICardapio()
-          }
+            this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.route.navigate(['/cardapio']);
+            });          }
         },
         error: (err) => {
           this.messageService.add({

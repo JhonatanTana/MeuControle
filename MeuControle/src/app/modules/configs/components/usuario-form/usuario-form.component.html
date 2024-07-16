@@ -1,0 +1,17 @@
+<div class="model">
+  <form [formGroup]="usuarioForm">
+    <div class="input-section">
+      <input type="text" id="usuario" class="input" formControlName="usuario">
+      <label id="usuario-label" for="usuario" class="input-label">Usuário</label>
+    </div>
+    <div class="input-section">
+      <input type="email" id="email" class="input" formControlName="email">
+      <label id="email-label" for="email" class="input-label">Email</label>
+    </div>
+    <div class="input-section">
+      <input type="password" id="senha" class="input" formControlName="senha">
+      <label id="senha-label" for="senha" class="input-label">Senha</label>
+    </div>
+    <p-button (click)="registrarUsuario()" [disabled]="!usuarioForm.valid" type="submit" [style]="{'margin-top': '1rem'}">Adicionar</p-button>
+  </form>
+</div>

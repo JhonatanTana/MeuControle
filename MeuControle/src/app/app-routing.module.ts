@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: "dashboard", loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),  canActivate:[GuardService]},
   { path: "pedidos", loadChildren: () => import('./modules/pedidos/pedidos.module').then((p) => p.PedidosModule)},
   { path: "cardapio", loadChildren: () => import('./modules/cardapio/cardapio.module').then((c) => c.CardapioModule)},
-  { path: "historico", loadChildren: () => import('./modules/historico/historico.module').then((h) => h.HistoricoModule)}
+  { path: "historico", loadChildren: () => import('./modules/historico/historico.module').then((h) => h.HistoricoModule)},
+  { path: "configs", loadChildren: () => import('./modules/configs/configs.module').then((j) => j.ConfigsModule)},
 ];
 
 @NgModule({

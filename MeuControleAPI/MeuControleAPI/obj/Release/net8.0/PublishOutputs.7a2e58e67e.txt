@@ -2,6 +2,7 @@ D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Rel
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\web.config
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\libman.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\MeuControleAPI.dll
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\MeuControleAPI.runtimeconfig.json
 D:\Documentos\Documents\VSCode\MeuControle\MeuControleAPI\MeuControleAPI\obj\Release\net8.0\PubTmp\Out\MeuControleAPI.pdb

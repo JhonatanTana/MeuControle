@@ -36,6 +36,7 @@ export class ProdutoComponent implements OnInit, OnDestroy{
     Preco: [0, [Validators.required, Validators.min(1)]],
     CategoriaId: [0 , [Validators.required, Validators.minLength(1)]],
     Disponibilidade: [false],
+    File: [null]
   });
   editProdutoForm = this.formBuilder.group({
     Nome: ['', [Validators.required]],
@@ -90,24 +91,30 @@ export class ProdutoComponent implements OnInit, OnDestroy{
   } //recupera as categorias na API
   handleSubmitAddProduto() {
     if (this.produtoForm?.valid && this.produtoForm.value) {
-      const requestProduto: ProdutoRequest = {
-        Nome: this.produtoForm.value.Nome as string,
-        Preco: this.produtoForm.value.Preco as number,
-        Disponibilidade: this.produtoForm.value.Disponibilidade as boolean,
-        CategoriaId: this.produtoForm.value.CategoriaId as number,
-      }
-      this.produtoService.cadastrarProduto(requestProduto).pipe(takeUntil(this.destroy$)).subscribe({
-        next:(response) => {
+      const formData = new FormData();
+      formData.append('Nome', this.produtoForm.value.Nome as string);
+      // @ts-ignore
+      formData.append('Preco', this.produtoForm.value.Preco as number);
+      // @ts-ignore
+      formData.append('Disponibilidade', this.produtoForm.value.Disponibilidade as boolean);
+      // @ts-ignore
+      formData.append('CategoriaId', this.produtoForm.value.CategoriaId as number);
+      // @ts-ignore
+      formData.append('file', this.produtoForm.get('File')?.value);
+
+      // @ts-ignore
+      this.produtoService.cadastrarProduto(formData).pipe(takeUntil(this.destroy$)).subscribe({
+        next: (response) => {
           if (response) {}
           this.messageService.add({
             severity: 'success',
             summary: 'Sucesso',
             detail: 'Produto criado com sucesso',
             life: 2000
-          })
-          this.dialogRef.close()
+          });
+          this.dialogRef.close();
           this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.route.navigate(['/cardapio']); // Navega para a mesma rota (/cardapio)
+            this.route.navigate(['/cardapio']);
           });
         },
         error: (err) => {
@@ -116,11 +123,18 @@ export class ProdutoComponent implements OnInit, OnDestroy{
             summary: 'Erro',
             detail: "Erro ao ao cadastrar o produto",
             life: 2000
-          })
+          });
         }
-      })
+      });
     }
   } //cadastra um novo produto
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files?.length) {
+      // @ts-ignore
+      this.produtoForm.patchValue({ File: input.files[0] });
+    }
+  }
   handleSubmitEditProduto() {
     if (this.editProdutoForm?.valid && this.editProdutoForm.value && this.produtoAction.event.id) {
       const produtoEditado: EditProdutoRequest = {

@@ -55,6 +55,7 @@ export class HomeComponent {
               detail: `Erro ao fazer login`,
               life: 2000,
             })
+            this.loading = false
           }
         }
       )

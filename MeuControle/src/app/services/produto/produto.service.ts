@@ -16,7 +16,6 @@ export class ProdutoService {
   private token = this.cookie.get("UserInfo")
   private httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json",
       Authorization: `Bearer ${this.token}`,
     })
   }
@@ -32,8 +31,8 @@ export class ProdutoService {
   getProdutoAtivo():Observable<Array<ProdutoResponse>> {
     return this.http.get<Array<ProdutoResponse>>(`${this.apiUrl}/Produto/Disponivel`,this.httpOptions)
   }
-  cadastrarProduto(requestData:ProdutoRequest){
-    return this.http.post<ProdutoResponse>(`${this.apiUrl}/Produto`, requestData,this.httpOptions)
+  cadastrarProduto(produto: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/Produto`, produto, this.httpOptions);
   }
   deletarProduto(id: number): Observable<DeleteProdutoResponse> {
     return this.http.delete<DeleteProdutoResponse>(`${this.apiUrl}/Produto/${id}`,{

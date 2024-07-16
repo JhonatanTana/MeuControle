@@ -1,0 +1,94 @@
+.model {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.input {
+  position: relative;
+  border: 2px solid var(--light-gray);
+  border-radius: 8px;
+  padding: .5rem;
+  outline: none;
+  transition: 0.2s ease;
+  &:hover, &:focus,  {
+    border-color: var(--primaria)
+  }
+  &::placeholder {
+    color: transparent;
+  }
+  &:hover ~ .input-label, &:focus ~ .input-label{
+    color: var(--primaria);
+  }
+}
+
+.input-label {
+  text-align: center;
+  position: relative;
+  top: 2vh;
+  left: 1vh;
+  width: 4.5rem;
+  color: var(--light-gray);
+  background: var(--white);
+  user-select: none;
+  font-weight: 500;
+  transform: scale(.9);
+}
+
+#quantidade-label {
+  width: 7.5rem !important;
+}
+
+.input-section select {
+  padding: .5rem;
+  border: 2px solid var(--light-gray);
+  border-radius: 8px;
+  outline: none;
+  &:hover, &:focus,  {
+    border-color: var(--primaria)
+  }
+  &:hover ~ .input-label, &:focus ~ .input-label{
+    color: var(--primaria);
+  }
+}
+
+.input-checkbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-checkbox input {
+  margin-right: 1rem;
+}
+
+button {
+  justify-content: center;
+  padding: .5rem;
+  cursor: pointer;
+  background: var(--primaria);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  transition: all .4s ease;
+  &:disabled {
+    background: var(--secundaria);
+  }
+  &:hover {
+    background: #7a3db7;
+  }
+}
