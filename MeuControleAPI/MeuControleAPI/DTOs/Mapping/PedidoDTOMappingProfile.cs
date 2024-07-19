@@ -12,6 +12,6 @@ public class PedidoDTOMappingProfile : Profile {
         CreateMap<ProdutosPedido, ProdutosPedidoDTO>().ReverseMap();
         CreateMap<FormaPagamento, FormaPagamentoDTO>().ReverseMap();
         CreateMap<Pedido, PedidoDTOUpdateResquest>().ReverseMap();
-        CreateMap<Pedido, PedidoDTOUpdateResponse>(); 
+        CreateMap<Pedido, PedidoDTOUpdateResponse>().ReverseMap(); 
     }
 }

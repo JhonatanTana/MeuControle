@@ -42,6 +42,6 @@ export class ProdutoService {
     });
   }
   editarProduto(requestData:EditProdutoRequest): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/Produto`, requestData,this.httpOptions)
+    return this.http.patch<void>(`${this.apiUrl}/Produto`, requestData,this.httpOptions)
   }
 }

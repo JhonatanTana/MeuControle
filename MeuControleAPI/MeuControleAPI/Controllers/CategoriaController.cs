@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using MeuControleAPI.DTOs;
+using MeuControleAPI.DTOs.Request;
+using MeuControleAPI.DTOs.Resposta;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -122,5 +124,24 @@ public class CategoriaController : Controller {
         };
 
         return Ok(categoriaAtualizadaDto);
+    }
+
+    [Authorize]
+    [HttpPatch]
+    public async Task<ActionResult<CategoriaDTOUpdateRequest>> Patch(CategoriaDTOUpdateRequest categoriaPatch) {
+
+        var categoria = await _uof.CategoriaRepository.GetAsync(c => c.CategoriaId == categoriaPatch.CategoriaId);
+
+        if (categoria is null) {
+            return BadRequest();
+        }
+
+        categoria.Disponibilidade = categoriaPatch.Disponibilidade;
+
+        _uof.CategoriaRepository.Update(categoria);
+        await _uof.CommitAsync();
+
+        var resposta = _mapper.Map<CategoriaDTO>(categoria);
+        return Ok(resposta);
     }
 }

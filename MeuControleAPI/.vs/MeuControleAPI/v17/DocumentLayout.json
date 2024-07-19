@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|d:\\documentos\\documents\\vscode\\meucontrole\\meucontroleapi\\meucontroleapi\\dtos\\produtodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CFDDFA-C7EB-4220-B343-5AFB822E4458}|MeuControleAPI\\MeuControleAPI.csproj|solutionrelative:meucontroleapi\\dtos\\produtodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProdutoDTO.cs",
+              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\ProdutoDTO.cs",
+              "RelativeDocumentMoniker": "MeuControleAPI\\DTOs\\ProdutoDTO.cs",
+              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\DTOs\\ProdutoDTO.cs",
+              "RelativeToolTip": "MeuControleAPI\\DTOs\\ProdutoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T15:40:17.538Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -27,14 +44,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "MeuControleAPI\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAOkAAAAAAAAAAAAIwAQBAAAcAAAA",
+              "Title": "ProdutoController.cs",
+              "DocumentMoniker": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\ProdutoController.cs",
+              "RelativeDocumentMoniker": "MeuControleAPI\\Controllers\\ProdutoController.cs",
+              "ToolTip": "D:\\Documentos\\Documents\\VSCode\\MeuControle\\MeuControleAPI\\MeuControleAPI\\Controllers\\ProdutoController.cs",
+              "RelativeToolTip": "MeuControleAPI\\Controllers\\ProdutoController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwCMAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T12:33:42.201Z",
+              "WhenOpened": "2024-07-18T15:05:29.141Z",
               "EditorCaption": ""
             }
           ]

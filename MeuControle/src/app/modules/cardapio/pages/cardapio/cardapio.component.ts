@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CardapioService } from "../../../../services/cardapio/cardapio.service";
 import { Router } from "@angular/router";
-import { CardapioDataTransferService } from "../../../../shared/services/cardapio/cardapio-data-transfer.service";
 import { CardapioResponse } from "../../../../models/interface/cardapio/cardapio-response";
 import { Subject, take, takeUntil } from "rxjs";
 import { ConfirmationService, MessageService } from "primeng/api";
@@ -10,9 +9,7 @@ import { ProdutoService } from "../../../../services/produto/produto.service";
 import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
 import { ProdutoComponent } from "../../components/produto/produto.component";
 import { ProdutoResponse } from "../../../../models/interface/produto/produto-response";
-import { CategoriaComponent } from "../../components/categoria/categoria.component";
-import { CategoriaResponse } from "../../../../models/interface/categoria/categoria-response";
-import { CategoriaService } from "../../../../services/categoria/categoria.service";
+
 
 @Component({
   selector: 'app-cardapio',
@@ -24,34 +21,20 @@ export class CardapioComponent implements OnInit,OnDestroy {
   private ref!: DynamicDialogRef
   public cardapioList: Array<CardapioResponse> = [];
   public produtoList: Array<ProdutoResponse> = [];
-  public categoriaList: Array<CategoriaResponse> = [];
 
   constructor(
     private cardapioService: CardapioService,
     private produtoService: ProdutoService,
-    private categoriaService: CategoriaService,
     private route: Router,
-    private cardapioDT: CardapioDataTransferService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private dialogService: DialogService,
   ) {  }
 
   ngOnInit(): void {
-     this.getServicesCardapio();
      this.getAPIProduto()
-     this.getAPICategoria()
   }
 
-  getServicesCardapio() {
-    const cardapioLoaded = this.cardapioDT.getCardapioData();
-
-    if (cardapioLoaded.length > 0) {
-      this.cardapioList = cardapioLoaded;
-    } else {
-      this.getAPICardapio();
-    }
-  }
   getAPICardapio() {
     this.cardapioService.getCardapio().pipe(take(1)).subscribe({next:(response) => {
         if (response.length > 0) {
@@ -74,23 +57,6 @@ export class CardapioComponent implements OnInit,OnDestroy {
       next: (response) => {
         if (response.length > 0) {
           this.produtoList = response;
-        }
-      },
-      error: (err) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: "Erro ao buscar as categorias",
-          life: 2000
-        })
-      }
-    })
-  }
-  getAPICategoria() {
-    this.categoriaService.getCategorias().pipe(takeUntil(this.destroy$)).subscribe({
-      next: (response) => {
-        if (response.length > 0) {
-          this.categoriaList = response;
         }
       },
       error: (err) => {
@@ -158,24 +124,6 @@ export class CardapioComponent implements OnInit,OnDestroy {
           })
         }
       })
-    }
-  }
-  handleCategoriaAction(event: EventAction): void {
-    if (event) {
-      this.ref = this.dialogService.open(CategoriaComponent, {
-        header: event?.action,
-        width: '25rem',
-        draggable: true,
-        contentStyle: { overflow: 'auto' },
-        baseZIndex: 10000,
-        data: {
-          event: event,
-          categoriasData: this.categoriaList,
-        },
-      });
-      this.ref.onClose.pipe(takeUntil(this.destroy$)).subscribe({
-        next: () => this.getAPICardapio(),
-      });
     }
   }
 

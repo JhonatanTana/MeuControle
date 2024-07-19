@@ -1,4 +1,5 @@
 export interface FormaPagamentoResponse {
-  formaPagamentoId:number
+  pagamentoId:number
   nome:string
+  disponibilidade:boolean
 }

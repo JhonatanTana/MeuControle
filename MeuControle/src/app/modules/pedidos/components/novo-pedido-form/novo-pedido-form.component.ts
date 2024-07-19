@@ -58,9 +58,7 @@ export class NovoPedidoFormComponent implements OnInit,OnDestroy {
             life: 2000
           })
           this.dialogRef.close();
-          this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.route.navigate(['/pedidos']);
-          });
+          this.RecarregarPagina();
         }
       },
       error: (err) => {
@@ -73,6 +71,11 @@ export class NovoPedidoFormComponent implements OnInit,OnDestroy {
         console.error('Erro ao adicionar produto:', err);
       }
     })
+  }
+  RecarregarPagina() {
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate(['/pedidos']);
+    });
   }
 
   ngOnDestroy(): void {

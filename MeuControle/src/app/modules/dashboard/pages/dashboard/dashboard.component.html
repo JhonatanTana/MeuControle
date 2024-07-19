@@ -12,7 +12,10 @@
     <div class="vendas reduzido" >
       <!-- Alterar para Quantidade de Pedidos em Aberto e Encerrado -->
       <h3>Pedidos Aberto</h3>
-      <span *ngFor="let pedido of PedidosAberto"> {{ pedido.quantidade }} </span>
+      <span *ngIf="PedidosAberto.length > 0; else emptyPedidos">
+        <span *ngFor="let pedido of PedidosAberto">{{ pedido.quantidade }}</span>
+      </span>
+      <ng-template #emptyPedidos><span>0</span></ng-template>
     </div>
     <div class="vendas reduzido">
       <!-- Alterar para Quantidade de Pedidos em Aberto e Encerrado -->
@@ -27,9 +30,9 @@
     <div class="graficos-content">
       <p-chart type="bar" [data]="chartDataPagamento" [options]="chartOptionsPagamento" [style]="{ width: '10rem' }"></p-chart>
     </div>
-    <div class="graficos-content">
+    <!--<div class="graficos-content">
       <p-chart type="bar" [data]="chartDataMes" [options]="chartOptionsMes" [style]="{ width: '10rem' }"></p-chart>
-    </div>
+    </div>-->
   </div>
 
 </div>

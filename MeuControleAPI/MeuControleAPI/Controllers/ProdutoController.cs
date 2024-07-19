@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using MeuControleAPI.DTOs;
+using MeuControleAPI.DTOs.Request;
+using MeuControleAPI.DTOs.Resposta;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -23,21 +25,21 @@ public class ProdutoController : Controller {
 
     [Authorize]
     [HttpPost] // cria um produto
-    public async Task<ActionResult<ProdutoDTO>> Post([FromForm] ProdutoDTO produtos, IFormFile file) {
+    public async Task<ActionResult<ProdutoDTO>> Post([FromForm] ProdutoDTO produtos) {
         if (produtos is null) {
             return BadRequest("Produtos não encontrado");
         }
 
-        if (file != null && file.Length > 0) {
+        if (produtos.file != null && produtos.file.Length > 0) {
             var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Uploads");
 
             if (!Directory.Exists(uploadsFolderPath)) {
                 Directory.CreateDirectory(uploadsFolderPath);
             }
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + produtos.file.FileName;
             var filePath = Path.Combine(uploadsFolderPath, uniqueFileName);
             using (var fileStream = new FileStream(filePath, FileMode.Create)) {
-                await file.CopyToAsync(fileStream);
+                await produtos.file.CopyToAsync(fileStream);
             }
             produtos.ImagemUrl = $"/Uploads/{uniqueFileName}";
         }
@@ -133,28 +135,26 @@ public class ProdutoController : Controller {
     }
 
     [Authorize]
-    [HttpPut] // edita um produto //Alterar para PATCH
-    public async Task<ActionResult<ProdutoDTO>> Put(ProdutoDTO produtos) {
+    [HttpPatch] // edita um produto //Alterar para PATCH
+    public async Task<ActionResult<ProdutoDTOUpdateRequest>> Patch(ProdutoDTOUpdateRequest patchProdutos) {
 
-        if (produtos is null) {
+        var produto = await _uof.ProdutoRepository.GetAsync(p => p.ProdutoId ==  patchProdutos.ProdutoId);
 
+        if (produto is null) {
             return NotFound("Produto nao encontrado");
         }
 
-        var produto = _mapper.Map<Produto>(produtos);
+        produto.Preco = patchProdutos.Preco;
+        produto.Nome = patchProdutos.Nome;
+        produto.Disponibilidade = patchProdutos.Disponibilidade;
+        produto.CategoriaId = patchProdutos.CategoriaId;
 
-        var produtoAtualizado = _uof.ProdutoRepository.Update(produto);
-
+        _uof.ProdutoRepository.Update(produto);
         await _uof.CommitAsync();
 
-        var produtoAtualizadoDto = new ProdutoDTO() {
-            ProdutoId = produtoAtualizado.ProdutoId,
-            Nome = produtoAtualizado.Nome,
-            Preco = produtoAtualizado.Preco,
-            Disponibilidade = produtoAtualizado.Disponibilidade,
-        };
+        var response = _mapper.Map<ProdutoDTOUpdateResponse>(produto);
 
-        return Ok(produtoAtualizadoDto);
+        return Ok(response);
     }
 
     [Authorize]

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using MeuControleAPI.DTOs;
+using MeuControleAPI.DTOs.Request;
+using MeuControleAPI.DTOs.Resposta;
 using MeuControleAPI.Models;
 using MeuControleAPI.Repositories.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -38,7 +40,7 @@ public class FormaPagamentoController : Controller {
         var novoPagamentoDto = _mapper.Map<FormaPagamentoDTO>(pagamentoCriado);
 
         return new CreatedAtRouteResult("ObterFomaPagamento",
-            new { id = novoPagamentoDto.PagamentoId }, pagamentoCriado);
+            new { id = novoPagamentoDto.FormaPagamentoId }, pagamentoCriado);
 
     }
 
@@ -63,12 +65,14 @@ public class FormaPagamentoController : Controller {
 
         var forma = await _uof.FormaPagamentoRepository.GetAllQueryableAsync();
 
+        var filtro = forma.Where(f => f.Disponibilidade == true);
+
         if (forma == null) {
 
             return NotFound("Forma de Pagamento nao encontrada");
         }
 
-        var formaPagamento = _mapper.Map<IEnumerable<FormaPagamentoDTO>>(forma);
+        var formaPagamento = _mapper.Map<IEnumerable<FormaPagamentoDTO>>(filtro);
         return Ok(formaPagamento);
     }
 
@@ -85,5 +89,27 @@ public class FormaPagamentoController : Controller {
 
         var formaPagamento = _mapper.Map<FormaPagamentoDTO>(forma);
         return Ok(formaPagamento);
+    }
+
+    [Authorize]
+    [HttpPatch] // desativa a forma de pagamenot
+    public async Task<ActionResult<ProdutoDTOUpdateRequest>> Patch(PagamentoDTOUpdateRequest patchPagamento) {
+
+        var pagamento = await _uof.FormaPagamentoRepository.GetAsync(p => p.FormaPagamentoId == patchPagamento.PagamentoId);
+
+        if (pagamento is null) {
+            return NotFound("Produto nao encontrado");
+        }
+
+        pagamento.FormaPagamentoId = patchPagamento.PagamentoId;
+        pagamento.Disponibilidade = patchPagamento.Disponibilidade;
+
+
+        _uof.FormaPagamentoRepository.Update(pagamento);
+        await _uof.CommitAsync();
+
+        var response = _mapper.Map<FormaPagamentoDTO>(pagamento);
+
+        return Ok(response);
     }
 }

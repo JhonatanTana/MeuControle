@@ -5,7 +5,6 @@ import { MessageService } from "primeng/api";
 import { Router } from "@angular/router";
 import { CategoriaResponse } from "../../../../models/interface/categoria/categoria-response";
 import { CardapioResponse } from "../../../../models/interface/cardapio/cardapio-response";
-import { ProdutoRequest } from "../../../../models/interface/produto/produto-request";
 import { CategoriaService } from "../../../../services/categoria/categoria.service";
 import { Subject, takeUntil } from "rxjs";
 import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
@@ -113,9 +112,7 @@ export class ProdutoComponent implements OnInit, OnDestroy{
             life: 2000
           });
           this.dialogRef.close();
-          this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.route.navigate(['/cardapio']);
-          });
+          this.RecarregarPagina();
         },
         error: (err) => {
           this.messageService.add({
@@ -153,9 +150,7 @@ export class ProdutoComponent implements OnInit, OnDestroy{
             life: 2000
           })
           this.dialogRef.close()
-          this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.route.navigate(['/cardapio']);
-          });
+          this.RecarregarPagina()
         },
         error: (err) => {
           this.messageService.add({
@@ -195,6 +190,11 @@ export class ProdutoComponent implements OnInit, OnDestroy{
       }
     })
   } //pegas as informações dos produtos
+  RecarregarPagina() {
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate(['/cardapio']);
+    });
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next()

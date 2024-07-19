@@ -20,5 +20,5 @@ public class Produto {
     public string? ImagemUrl { get; set; }
 
     [JsonIgnore]
-    public ICollection<Categoria> Categorias { get; set; }
+    public IEnumerable<Categoria> Categorias { get; set; }
 }

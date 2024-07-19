@@ -1,0 +1,32 @@
+.voltar {
+  padding: .5rem;
+}
+
+button {
+  width: 5.5rem;
+  font-weight: 600;
+  color: var(--primaria);
+  border: none;
+  background: transparent;
+  padding: .5rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.table-content {
+  width: 95vw;
+  height: 80vh;
+  padding: 3vh;
+}
+
+.filtro {
+  border-radius: 8px;
+  border: 1px solid var(--primaria);
+  padding: .5rem;
+  user-select: none;
+  outline: none;
+  margin-right: 1rem;
+}

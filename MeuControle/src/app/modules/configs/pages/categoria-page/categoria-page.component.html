@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <app-categoria-table
+    [categoria] = "categoriaList"
+    (categoriaEvent)="handleCategoriaAction($event)"
+  ></app-categoria-table>
+</div>

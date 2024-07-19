@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private readonly destroy$:Subject<void> = new Subject()
   valorTotalDia: number = 0;
   valorTotalMes: number = 0;
-  valorTotal: number = 0;
   chartData: any;
   chartOptions: any;
   chartDataPagamento: any;

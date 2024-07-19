@@ -1,0 +1,41 @@
+<div class="voltar">
+  <button (click)="voltar()">
+    <i class="pi pi-arrow-left" style="font-size: 1rem"></i>
+    Voltar
+  </button>
+</div>
+<p-table
+  [paginator]="true"
+  [value]="forma"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 20, 30]"
+  [globalFilterFields]="['userName', 'email']"
+  [tableStyle]="{'min-height': '5rem'}"
+  #dt1
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:10%">
+        Categoria
+      </th>
+      <th style="width:5%">
+        Status
+      </th>
+      <th style="width:5%">
+        <p-button label="Adicionar Forma" icon="pi pi-plus" (onClick)="handlePagamentoEvent(addPagamento)" />
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-forma>
+    <tr>
+      <td> {{ forma.nome }} </td>
+      <td>
+        <span style="color: darkred" *ngIf="!forma.disponibilidade">Inativo</span>
+        <span style="color: darkgreen" *ngIf="forma.disponibilidade">Ativo</span>
+      </td>
+      <td>
+        <p-inputSwitch [(ngModel)]="forma.disponibilidade" (onChange)="InativarPagamento(forma.formaPagamentoId, forma.disponibilidade)" />
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

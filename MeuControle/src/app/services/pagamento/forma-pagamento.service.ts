@@ -3,6 +3,9 @@ import { environment } from "../../../environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { FormaPagamentoResponse } from "../../models/interface/formaPagamento/forma-pagamento-response";
+import { InativaPagamentoRequest } from "../../models/interface/formaPagamento/inativa-pagamento-request";
+import { Observable } from "rxjs";
+import { FormaPagamentoRequest } from "../../models/interface/formaPagamento/forma-pagamento-request";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +26,15 @@ export class FormaPagamentoService {
   ) { }
 
   getFormas() {
+    return this.http.get<Array<FormaPagamentoResponse>>(`${this.apiUrl}/FormaPagamento/Ativas`,this.httpOptions)
+  }
+  getTodasFormas() {
     return this.http.get<Array<FormaPagamentoResponse>>(`${this.apiUrl}/FormaPagamento`,this.httpOptions)
+  }
+  desativar(requestData:InativaPagamentoRequest): Observable<InativaPagamentoRequest> {
+    return this.http.patch<InativaPagamentoRequest>(`${this.apiUrl}/FormaPagamento`, requestData, this.httpOptions)
+  }
+  cadastrarFormas(requestData: FormaPagamentoRequest) {
+    return this.http.post<FormaPagamentoRequest>(`${this.apiUrl}/FormaPagamento`, requestData, this.httpOptions)
   }
 }

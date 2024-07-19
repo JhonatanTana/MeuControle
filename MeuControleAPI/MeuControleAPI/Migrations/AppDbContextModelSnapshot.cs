@@ -139,6 +139,9 @@ namespace MeuControleAPI.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("FormaPagamentoId"));
 
+                    b.Property<bool>("Disponibilidade")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -196,7 +199,6 @@ namespace MeuControleAPI.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ImagemUrl")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Nome")

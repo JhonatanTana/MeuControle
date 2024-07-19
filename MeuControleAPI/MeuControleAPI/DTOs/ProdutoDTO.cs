@@ -9,4 +9,5 @@ public class ProdutoDTO {
     public bool Disponibilidade { get; set; }
     public int CategoriaId { get; set; }
     public string? ImagemUrl { get; set; }
+    public IFormFile? file { get; set; }
 }

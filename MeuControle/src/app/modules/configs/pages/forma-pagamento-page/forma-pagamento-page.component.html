@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <app-pagamento-table
+    [forma]="formaPagamentoList"
+    (categoriaEvent)="handlePagamentoAction($event)"
+  ></app-pagamento-table>
+</div>

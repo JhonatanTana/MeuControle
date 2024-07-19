@@ -90,13 +90,13 @@ export class UsuarioTableComponent implements OnInit, OnDestroy {
           this.messageService.add({
             severity: 'success',
             summary: 'Sucesso',
-            detail: 'Usuario desabilitado',
+            detail: ativo ? 'Usuário habilitado' : 'Usuário desabilitado',
             life: 2000
           })
         }
       }
     })
-    this.recarregaPagina()
+    //this.recarregaPagina()
   }
   recarregaPagina() {
     this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {

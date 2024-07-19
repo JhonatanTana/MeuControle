@@ -72,8 +72,8 @@
           (click)="handleUsuarioEvent(resetaSenha, usuario.id)"
           [rounded]="true"
           [text]="true"
-          [style]="{ width: '1.5rem' }" />
-        <p-button
+          [style]="{ width: '1.5rem', margin: '0 .5rem 0 0', }" />
+        <!--<p-button
           icon="pi pi-check"
           (click)="InativaUsuario(usuario.id, !usuario.ativo)"
           [rounded]="true"
@@ -88,7 +88,9 @@
           [text]="true"
           [style]="{ width: '1.5rem' }"
           *ngIf="usuario.ativo"
-        />
+        />-->
+        <p-inputSwitch [(ngModel)]="usuario.ativo" (onChange)="InativaUsuario(usuario.id, usuario.ativo)" />
+
       </td>
     </tr>
   </ng-template>
